@@ -144,7 +144,6 @@
             margin-bottom: 18px;
             cursor: pointer;
         }
-        /* ပုံပါအတိုင်း နက်ပြာရောင် ရွှေရောင်ကြယ်တာရာပါသော ကဒ်ကျောခံဒီဇိုင်း */
         .stacked-card {
             position: absolute;
             width: 120px;
@@ -346,7 +345,6 @@
         }
         .booking-btn:hover { transform: scale(1.02); }
         
-        /* Social Media Icons Styling */
         .social-icons-row {
             display: flex;
             justify-content: center;
@@ -553,7 +551,7 @@
                 },
                 finOpts: [
                     { id: 'f_1', title: 'ငွေကြေးပိုရနိုင်ဖို့ရှိလား' },
-                    { id: 'f_2', title: 'စီးပွားရေးအဆင်ပြေမလား' },
+                    { id: 'f_2', title: 'စီးပွားရေးအဆင်ပြေမပြေ' },
                     { id: 'f_3', title: 'မိမိငွေကံ' },
                     { id: 'f_4', title: 'စီးပွားရေးကံ' }
                 ],
@@ -714,6 +712,19 @@
                 });
             }
         }
+
+        // Website ထဲဝင်ပြီး ဘယ်နေရာကိုမဆို ပထမဆုံး နှိပ်လိုက်တာနဲ့ သီချင်း အလိုအလျောက် စတင်ရန်
+        document.addEventListener('click', function initAudioPlay() {
+            if (!isPlaying) {
+                audio.play().then(() => {
+                    isPlaying = true;
+                    audioBtn.textContent = "🎶";
+                    audioBtn.style.background = "rgba(212, 175, 55, 0.5)";
+                }).catch(e => {
+                    console.log("Autoplay waiting for interaction");
+                });
+            }
+        }, { once: true });
 
         function startShuffle() {
             const cards = document.querySelectorAll('.stacked-card');
