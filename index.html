@@ -13,8 +13,8 @@
             font-family: 'Pyidaungsu', sans-serif;
         }
         body {
-            background: radial-gradient(circle at center, #13241d 0%, #060f0b 100%);
-            color: #e2f0d9;
+            background: linear-gradient(135deg, #1b3026 0%, #0d1a14 100%);
+            color: #eaf4f1;
             min-height: 100vh;
             padding: 20px;
             display: flex;
@@ -24,11 +24,11 @@
         .container {
             width: 100%;
             max-width: 480px;
-            background: rgba(18, 38, 30, 0.92);
-            border: 1px solid rgba(197, 160, 89, 0.5);
+            background: rgba(20, 45, 35, 0.85);
+            border: 1px solid rgba(212, 175, 55, 0.4);
             border-radius: 28px;
             padding: 24px;
-            box-shadow: 0 15px 40px rgba(0,0,0,0.8), 0 0 25px rgba(46, 125, 50, 0.25);
+            box-shadow: 0 15px 40px rgba(0,0,0,0.6), 0 0 20px rgba(46, 125, 50, 0.2);
             backdrop-filter: blur(15px);
             margin-bottom: 30px;
         }
@@ -38,8 +38,8 @@
             position: relative;
         }
         .audio-btn, .lang-btn {
-            background: rgba(197, 160, 89, 0.2);
-            border: 1px solid #c5a059;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
             color: #f3e76e;
             border-radius: 50%;
             width: 40px;
@@ -53,7 +53,7 @@
             top: 0;
             transition: 0.3s;
         }
-        .audio-btn:hover, .lang-btn:hover { background: rgba(197, 160, 89, 0.4); }
+        .audio-btn:hover, .lang-btn:hover { background: rgba(212, 175, 55, 0.4); }
         .audio-btn { right: 0; }
         .lang-btn { left: 0; font-size: 11px; font-weight: bold; border-radius: 12px; width: 48px; }
 
@@ -62,10 +62,10 @@
             font-size: 26px;
             font-weight: 700;
             letter-spacing: 2px;
-            background: linear-gradient(to right, #fff, #c5a059, #f3e76e);
+            background: linear-gradient(to right, #fff, #d4af37, #f3e76e);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
-            text-shadow: 0 2px 12px rgba(197, 160, 89, 0.4);
+            text-shadow: 0 2px 12px rgba(212, 175, 55, 0.3);
             margin-top: 5px;
         }
         .brand-subtitle {
@@ -78,7 +78,7 @@
         .section-title {
             text-align: center;
             font-size: 15px;
-            color: #c5a059;
+            color: #d4af37;
             margin: 20px 0 12px 0;
         }
         .categories {
@@ -88,8 +88,8 @@
             margin-bottom: 15px;
         }
         .cat-card {
-            background: linear-gradient(135deg, rgba(25, 60, 46, 0.75), rgba(12, 35, 26, 0.75));
-            border: 1px solid rgba(197, 160, 89, 0.3);
+            background: rgba(30, 65, 50, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 16px;
             padding: 16px 10px;
             text-align: center;
@@ -98,8 +98,8 @@
         }
         .cat-card:hover, .cat-card.active {
             border-color: #f3e76e;
-            background: linear-gradient(135deg, rgba(35, 85, 65, 0.95), rgba(18, 50, 36, 0.95));
-            box-shadow: 0 0 18px rgba(197, 160, 89, 0.4);
+            background: rgba(45, 95, 75, 0.85);
+            box-shadow: 0 0 18px rgba(212, 175, 55, 0.35);
             transform: translateY(-2px);
         }
         .cat-card span {
@@ -107,7 +107,7 @@
             margin-top: 6px;
             font-size: 13px;
             font-weight: bold;
-            color: #e2f0d9;
+            color: #eaf4f1;
         }
         .sub-options-container {
             display: flex;
@@ -116,19 +116,19 @@
             margin-bottom: 20px;
         }
         .sub-option-box {
-            background: rgba(22, 50, 38, 0.8);
-            border: 1px solid rgba(197, 160, 89, 0.3);
+            background: rgba(30, 65, 50, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.3);
             border-radius: 14px;
             padding: 12px 16px;
             cursor: pointer;
             transition: all 0.3s;
             font-size: 13px;
-            color: #e2f0d9;
+            color: #eaf4f1;
         }
         .sub-option-box:hover, .sub-option-box.active {
             border-color: #f3e76e;
-            background: rgba(35, 85, 65, 0.95);
-            box-shadow: 0 0 12px rgba(197, 160, 89, 0.4);
+            background: rgba(45, 95, 75, 0.85);
+            box-shadow: 0 0 12px rgba(212, 175, 55, 0.3);
         }
 
         .deck-area {
@@ -148,10 +148,11 @@
             position: absolute;
             width: 120px;
             height: 180px;
-            background: linear-gradient(135deg, #1b4332, #081c15);
-            border: 1.5px solid #c5a059;
+            background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=600&auto=format&fit=crop');
+            background-size: cover;
+            border: 1.5px solid #d4af37;
             border-radius: 12px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.7);
+            box-shadow: 0 8px 20px rgba(0,0,0,0.6);
             transition: transform 0.5s ease;
             display: flex;
             align-items: center;
@@ -159,19 +160,20 @@
         }
         .stacked-card::after {
             content: "🌙";
-            font-size: 28px;
+            font-size: 24px;
+            text-shadow: 0 2px 5px rgba(0,0,0,0.8);
         }
 
         .action-lux-btn {
-            background: linear-gradient(135deg, #f3e76e, #c5a059, #8d6b2c);
-            color: #050d0a;
+            background: linear-gradient(135deg, #f3e76e, #d4af37, #aa7c11);
+            color: #0d1a14;
             border: none;
             padding: 13px 28px;
             border-radius: 30px;
             font-size: 14px;
             font-weight: bold;
             cursor: pointer;
-            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.5);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
             transition: 0.3s;
         }
         .action-lux-btn:active { transform: scale(0.97); }
@@ -185,12 +187,12 @@
         .slot-box {
             width: 75px;
             height: 115px;
-            border: 2px dashed rgba(197, 160, 89, 0.5);
+            border: 2px dashed rgba(212, 175, 55, 0.4);
             border-radius: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            background: rgba(12, 35, 26, 0.6);
+            background: rgba(15, 35, 25, 0.5);
             font-size: 11px;
             color: #a3c1ad;
             text-align: center;
@@ -199,12 +201,11 @@
         .slot-box.filled {
             border-style: solid;
             border-color: #f3e76e;
-            background: #1b4332;
+            background: #224d3a;
             color: #f3e76e;
             font-weight: bold;
         }
 
-        /* Fan Spread Deck Layout (ပန်ကာပုံစံဖြန့်ခင်းခြင်း) */
         .cards-spread-deck {
             position: relative;
             width: 100%;
@@ -218,25 +219,18 @@
             position: absolute;
             width: 52px;
             height: 90px;
-            background: linear-gradient(135deg, #1b4332, #081c15);
-            border: 1.5px solid #c5a059;
+            background-image: url('https://images.unsplash.com/photo-1534447677768-be436bb09401?q=80&w=400&auto=format&fit=crop');
+            background-size: cover;
+            border: 1.5px solid #d4af37;
             border-radius: 8px;
             cursor: pointer;
             transition: transform 0.3s, box-shadow 0.3s;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.6);
+            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             transform-origin: bottom center;
-        }
-        .spread-card-item::after {
-            content: "🌙";
-            font-size: 14px;
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
         }
         .spread-card-item:hover { 
             transform: translateY(-15px) scale(1.1) !important; 
-            box-shadow: 0 8px 22px rgba(197, 160, 89, 0.8);
+            box-shadow: 0 8px 22px rgba(212, 175, 55, 0.7);
             z-index: 100;
         }
         .spread-card-item.chosen {
@@ -246,48 +240,95 @@
 
         .result-section {
             margin-top: 20px;
-            background: rgba(18, 38, 30, 0.95);
+            background: rgba(15, 35, 25, 0.95);
             border-radius: 20px;
             padding: 20px;
-            border: 1px solid rgba(197, 160, 89, 0.6);
+            border: 1px solid rgba(212, 175, 55, 0.5);
             display: none;
             text-align: center;
+            max-height: 550px;
+            overflow-y: auto;
         }
-        .result-cards-row {
+        .single-card-result-box {
+            background: rgba(30, 65, 50, 0.5);
+            border: 1px solid rgba(212, 175, 55, 0.3);
+            border-radius: 14px;
+            padding: 15px;
+            margin-bottom: 15px;
+            text-align: left;
+        }
+        .single-card-flex {
             display: flex;
-            justify-content: center;
             gap: 12px;
-            margin: 15px 0;
+            align-items: center;
         }
         .result-card-single {
-            width: 95px;
-            height: 150px;
+            width: 80px;
+            height: 130px;
             object-fit: cover;
-            border-radius: 10px;
-            border: 1.5px solid #c5a059;
-            box-shadow: 0 5px 15px rgba(197, 160, 89, 0.4);
+            border-radius: 8px;
+            border: 1px solid #d4af37;
+            box-shadow: 0 4px 12px rgba(212, 175, 55, 0.3);
+            flex-shrink: 0;
         }
-        .result-content {
-            font-size: 13px;
-            line-height: 1.8;
-            color: #e2f0d9;
-            text-align: left;
-            margin-top: 15px;
-            background: rgba(25, 60, 46, 0.6);
-            padding: 16px;
+        .card-details-text h4 {
+            color: #f3e76e;
+            font-size: 14px;
+            margin-bottom: 6px;
+        }
+        .card-details-text p {
+            font-size: 12px;
+            line-height: 1.6;
+            color: #eaf4f1;
+        }
+        .summary-box {
+            background: rgba(45, 95, 75, 0.6);
+            border: 1px solid #d4af37;
             border-radius: 14px;
-            border: 1px solid rgba(197, 160, 89, 0.3);
+            padding: 15px;
+            margin-top: 15px;
+            text-align: left;
         }
+        .summary-box h4 {
+            color: #f3e76e;
+            font-size: 14px;
+            margin-bottom: 8px;
+            text-align: center;
+        }
+        .summary-box p {
+            font-size: 12px;
+            line-height: 1.7;
+            color: #eaf4f1;
+        }
+
+        .action-buttons-group {
+            display: flex;
+            gap: 10px;
+            margin-top: 15px;
+        }
+        .secondary-lux-btn {
+            flex: 1;
+            background: rgba(212, 175, 55, 0.2);
+            border: 1px solid #d4af37;
+            color: #f3e76e;
+            padding: 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: 0.3s;
+        }
+        .secondary-lux-btn:hover { background: rgba(212, 175, 55, 0.4); }
         
         .admin-update-section {
             margin-top: 25px;
             text-align: center;
-            background: rgba(25, 60, 46, 0.8);
-            border: 1px solid rgba(197, 160, 89, 0.5);
+            background: rgba(30, 65, 50, 0.7);
+            border: 1px solid rgba(212, 175, 55, 0.4);
             border-radius: 18px;
             padding: 20px;
             display: none;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.5);
+            box-shadow: 0 5px 20px rgba(0,0,0,0.4);
         }
         .social-section {
             text-align: center;
@@ -296,22 +337,45 @@
         .booking-btn {
             display: block;
             width: 100%;
-            background: linear-gradient(135deg, #f3e76e, #c5a059, #8d6b2c);
-            color: #050d0a;
+            background: linear-gradient(135deg, #f3e76e, #d4af37, #aa7c11);
+            color: #0d1a14;
             padding: 15px;
             border-radius: 30px;
             text-decoration: none;
             font-weight: bold;
             font-size: 14px;
             text-align: center;
-            box-shadow: 0 6px 20px rgba(197, 160, 89, 0.4);
+            box-shadow: 0 6px 20px rgba(212, 175, 55, 0.4);
             transition: 0.3s;
+            margin-bottom: 15px;
         }
         .booking-btn:hover { transform: scale(1.02); }
+        
+        .social-icons-row {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 10px;
+        }
+        .social-icon-badge {
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            background: rgba(30, 65, 50, 0.8);
+            border: 1px solid rgba(212, 175, 55, 0.4);
+            padding: 8px 14px;
+            border-radius: 20px;
+            color: #f3e76e;
+            font-size: 12px;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+        .social-icon-badge:hover { background: rgba(45, 95, 75, 1); }
+
         .footer {
             text-align: center;
             font-size: 11px;
-            color: #8fa89b;
+            color: #a3c1ad;
             margin-top: 20px;
         }
     </style>
@@ -378,25 +442,41 @@
         <!-- Result Box -->
         <div class="result-section" id="resultSection">
             <div class="section-title" style="color: #f3e76e; margin-top:0;" id="resHeading">သင့်ရဲ့ တာရော့တ် ဟောကိန်း ရလဒ်</div>
-            <div class="result-cards-row" id="resultCardsRow"></div>
-            <div class="result-content" id="resultContent">
-                ဟောကိန်းအချက်အလက်များ...
+            
+            <div id="detailedCardsContainer"></div>
+
+            <div class="summary-box">
+                <h4>✨ သုံးကဒ်ပေါင်းစပ် အဟောအကျဉ်း</h4>
+                <p id="summaryText">ဟောကိန်းအနှစ်ချုပ်...</p>
+            </div>
+
+            <div class="action-buttons-group">
+                <button class="secondary-lux-btn" onclick="resetApp()">🔄 ထပ်မံမေးမြန်းမည်</button>
             </div>
         </div>
 
         <!-- Telegram Admin Dynamic Update & Wallpaper Section -->
         <div class="admin-update-section" id="adminUpdateSection">
             <h3 style="color: #f3e76e; font-size: 15px; margin-bottom: 12px;">✨ ယနေ့အတွက် အထူးဟောကိန်းနှင့် အပ်ဒိတ် ✨</h3>
-            <p id="cloudUpdateText" style="font-size: 13px; color: #e2f0d9; margin-bottom: 15px; line-height: 1.6;"></p>
+            <p id="cloudUpdateText" style="font-size: 13px; color: #eaf4f1; margin-bottom: 15px; line-height: 1.6;"></p>
             <div id="cloudWallpaperWrapper" style="display: none;">
-                <img id="cloudWallpaperImg" src="" alt="Lucky Wallpaper" style="width: 100%; max-width: 220px; height: auto; border-radius: 12px; border: 1.5px solid #c5a059; box-shadow: 0 4px 15px rgba(197, 160, 89, 0.4);">
+                <img id="cloudWallpaperImg" src="" alt="Lucky Wallpaper" style="width: 100%; max-width: 220px; height: auto; border-radius: 12px; border: 1.5px solid #d4af37; box-shadow: 0 4px 15px rgba(212, 175, 55, 0.4);">
                 <p style="font-size: 11px; color: #a3c1ad; margin-top: 8px;">ပုံကို ဖိ၍ ဖုန်းမှာ Download ဆွဲသုံးနိုင်ပါသည်</p>
             </div>
         </div>
 
-        <!-- Telegram Direct Booking Link -->
+        <!-- Telegram Direct Booking Link & Social Badges -->
         <div class="social-section">
-            <a href="https://t.me/Poe_manager" target="_blank" class="booking-btn" id="bookingBtnText">💬 Telegram ဖြင့် တိုက်ရိုက် မေးမြန်းရန်</a>
+            <a href="https://t.me/Poe_manager" target="_blank" class="booking-btn" id="bookingBtnText">💬 ဆရာမနဲ့ တိုက်ရိုက်မေးမြန်းရန်</a>
+            
+            <div class="social-icons-row">
+                <a href="https://www.facebook.com/share/1JkHbjQoQb/?mibextid=wwXIfr" target="_blank" class="social-icon-badge">
+                    <span>📘</span> Facebook
+                </a>
+                <a href="https://www.tiktok.com/@nwe_poe_eain1?_r=1&_t=ZS-99Tck4Mtwtb" target="_blank" class="social-icon-badge">
+                    <span>🎬</span> TikTok
+                </a>
+            </div>
         </div>
 
         <div class="footer" id="footerText">
@@ -404,7 +484,7 @@
         </div>
     </div>
 
-    <!-- Background Music Audio Element (Connected to mysong.mp3 Raw Link) -->
+    <!-- Background Music Audio Element -->
     <audio id="bgAudio" loop>
         <source src="https://raw.githubusercontent.com/TarotByNwePoe/Tarot-By-Nwe-Poe-Eain/refs/heads/main/mysong.mp3" type="audio/mpeg">
     </audio>
@@ -416,12 +496,17 @@
         let chosenCards = [];
         const totalNeeded = 3;
 
-        const tarotImagesPool = [
-            { nameMM: "ချစ်သူများ (The Lovers)", nameEN: "The Lovers", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_06_Lovers.jpg" },
-            { nameMM: "ဒင်္ဂါးပြားများ၏ အစ (Ace of Pentacles)", nameEN: "Ace of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Pents01.jpg" },
-            { nameMM: "ကြယ်တာရာ (The Star)", nameEN: "The Star", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/Tarot_The_Star.jpg" },
-            { nameMM: "မှော်ဆရာ (The Magician)", nameEN: "The Magician", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg" },
-            { nameMM: "နေမင်းကြီး (The Sun)", nameEN: "The Sun", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg" }
+        const fullTarotPool78 = [
+            { nameMM: "မဟေသီ (The Empress)", nameEN: "The Empress", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_03_Empress.jpg", desc: "ကြွယ်ဝချမ်းသာမှု၊ မေတ္တာတရားနှင့် ဖန်တီးနိုင်စွမ်း မြင့်မားနေသည့် အချိန်ဖြစ်ပါသည်။" },
+            { nameMM: "ချစ်သူများ (The Lovers)", nameEN: "The Lovers", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_06_Lovers.jpg", desc: "ဆက်ဆံရေးတွင် အရေးကြီးသော ဆုံးဖြတ်ချက်ချရခြင်းနှင့် စစ်မှန်သော နားလည်မှုကို ပြသသည်။" },
+            { nameMM: "ကြယ်တာရာ (The Star)", nameEN: "The Star", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/Tarot_The_Star.jpg", desc: "မျှော်လင့်ချက်အသစ်များ၊ စိတ်နှလုံးချမ်းသာမှုနှင့် ကံကောင်းခြင်းများ ဝင်ရောက်လာပါမည်။" },
+            { nameMM: "မှော်ဆရာ (The Magician)", nameEN: "The Magician", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg", desc: "သင့်တွင် လိုအပ်သော စွမ်းရည်နှင့် အခွင့်အလမ်းများ အပြည့်အစုံ ရှိနေပြီဖြစ်ပါသည်။" },
+            { nameMM: "နေမင်းကြီး (The Sun)", nameEN: "The Sun", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg", desc: "ပျော်ရွှင်မှု၊ အောင်မြင်မှုနှင့် တောက်ပသော အနာဂတ်ကို ပိုင်ဆိုင်ရမည့် ကာလဖြစ်သည်။" },
+            { nameMM: "ကမ္ဘာလောက (The World)", nameEN: "The World", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg", desc: "လုပ်ငန်းတစ်ခု အောင်မြင်စွာ ပြီးဆုံးခြင်းနှင့် အဆင့်သစ်တစ်ခုသို့ ရောက်ရှိခြင်းကို ကိုယ်စားပြုသည်။" },
+            { nameMM: "ကံတရားဘီး (Wheel of Fortune)", nameEN: "Wheel of Fortune", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg", desc: "ကံတရား၏ အကောင်းဘက်သို့ ပြောင်းလဲလှည့်ပတ်မှုနှင့် အခွင့်အလမ်းကောင်းများ ပေါ်ပေါက်လာခြင်း။" },
+            { nameMM: "ခွန်အား (Strength)", nameEN: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg", desc: "စိတ်ဓာတ်ကြံ့ခိုင်မှု၊ သည်းခံခြင်းနှင့် ချိုသာသော ဩဇာတိက္ကမဖြင့် ကျော်ဖြတ်နိုင်မည်။" },
+            { nameMM: "ဒင်္ဂါးပြားများ၏ အစ (Ace of Pentacles)", nameEN: "Ace of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Pents01.jpg", desc: "ငွေကြေးဝင်ငွေ အခွင့်အလမ်းသစ်များနှင့် ရေရှည်တည်ငြိမ်မှု စတင်ပေါ်ပေါက်လာမည်။" },
+            { nameMM: "ဖလားများ၏ အစ (Ace of Cups)", nameEN: "Ace of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg", desc: "ရင်ခုန်စရာ မေတ္တာတရားများနှင့် စိတ်ခံစားချက်အသစ်များ ပြည့်ဝလာမည့် အချိန်ဖြစ်သည်။" }
         ];
 
         const translations = {
@@ -434,7 +519,7 @@
                 c4: "ပညာရေး",
                 subTitleDefault: "အမျိုးအစား ရွေးပါ။",
                 shuffleBtnText: "✨ ကဒ်ကို မွှေမည် (4s)",
-                bookingBtnText: "💬 Telegram ဖြင့် တိုက်ရိုက် မေးမြန်းရန်",
+                bookingBtnText: "💬 ဆရာမနဲ့ တိုက်ရိုက်မေးမြန်းရန်",
                 footerText: "© 2026 Nwe Poe Eain Tarot · All Rights Reserved",
                 loveOpts: [
                     { id: 'rs_active', title: 'လက်ရှိချစ်သူ / အိမ်ထောင်ဖက် (RS)' },
@@ -476,9 +561,7 @@
                     { id: 'e_1', title: 'လက်ရှိပညာရေး' },
                     { id: 'e_2', title: 'စာမေးပွဲအောင်နိုင်လား' }
                 ],
-                readings: {
-                    default: "✨ **အတိတ် (Past):** ယခင်ဖြစ်ရပ်များမှ သင်ခန်းစာယူကာ ရှေ့ဆက်ရမည့် ကာလဖြစ်ပါသည်။<br><br>✨ **ပစ္စုပ္ပန် (Present):** လက်ရှိအခြေအနေကို သတိလက်လွတ်မရှိဘဲ အကောင်းဆုံး တည်ဆောက်နေရချိန် ဖြစ်သည်။<br><br>✨ **အနာဂတ် (Future):** ကြိုးစားမှုအတွက် အကောင်းဆုံးသော ရလဒ်များနှင့် အခွင့်အလမ်းသစ်များ ပိုင်ဆိုင်ရပါမည်။"
-                }
+                summaryDefault: "ရွေးချယ်ထားသော ကဒ်သုံးချပ်၏ စွမ်းအင်အရ သင့်ရဲ့ မေးခွန်းအတွက် အတိတ်၊ ပစ္စုပ္ပန်နှင့် အနာဂတ် လမ်းညွှန်ချက်များ အကောင်းဘက်သို့ ဦးတည်နေပြီး စိတ်ချမ်းသာမှုနှင့် အောင်မြင်မှုများကို ပိုင်ဆိုင်ရပါလိမ့်မည်။"
             },
             eng: {
                 brandSub: "Astrology & Tarot Reading",
@@ -531,9 +614,7 @@
                     { id: 'e_1', title: 'Current academic progress' },
                     { id: 'e_2', title: 'Exam success likelihood' }
                 ],
-                readings: {
-                    default: "✨ **Past:** Lessons from previous experiences are guiding you forward.<br><br>✨ **Present:** A focused time to build stability with awareness.<br><br>✨ **Future:** Rewarding outcomes and positive new chapters await you."
-                }
+                summaryDefault: "Based on the energies of the selected cards, your path indicates positive guidance from past to future, bringing you rewarding and harmonious outcomes."
             }
         };
 
@@ -572,14 +653,14 @@
                 });
 
                 let subContainer = document.createElement('div');
-                subContainer.style.cssText = "margin-top: 10px; display: flex; flex-direction: column; gap: 6px; border-left: 2px solid #c5a059; padding-left: 10px;";
+                subContainer.style.cssText = "margin-top: 10px; display: flex; flex-direction: column; gap: 6px; border-left: 2px solid #d4af37; padding-left: 10px;";
                 
                 let activeSubList = translations[currentLang].loveSubOptions[selectedSubOption] || [];
                 activeSubList.forEach(sub => {
                     let sBox = document.createElement('div');
                     sBox.className = "sub-option-box";
                     sBox.style.fontSize = "12px";
-                    sBox.style.background = "rgba(12, 35, 26, 0.5)";
+                    sBox.style.background = "rgba(20, 45, 35, 0.5)";
                     sBox.textContent = "🔹 " + sub.title;
                     subContainer.appendChild(sBox);
                 });
@@ -616,12 +697,12 @@
             if (isPlaying) {
                 audio.pause();
                 audioBtn.textContent = "🎵";
-                audioBtn.style.background = "rgba(197, 160, 89, 0.2)";
+                audioBtn.style.background = "rgba(212, 175, 55, 0.2)";
                 isPlaying = false;
             } else {
                 audio.play().then(() => {
                     audioBtn.textContent = "🎶";
-                    audioBtn.style.background = "rgba(197, 160, 89, 0.5)";
+                    audioBtn.style.background = "rgba(212, 175, 55, 0.5)";
                     isPlaying = true;
                 }).catch(e => {
                     console.log("Audio play blocked");
@@ -629,7 +710,6 @@
             }
         }
 
-        // ကဒ်ကို 4 စက္ကန့်ကြာ မွှေပေးမည့် Animation
         function startShuffle() {
             const cards = document.querySelectorAll('.stacked-card');
             
@@ -651,7 +731,6 @@
             }, 4000);
         }
 
-        // ပန်ကာပုံစံ (Fan Spread) ဖြန့်ခင်းခြင်း
         function initFanSpreadDeck() {
             const spread = document.getElementById('spreadDeck');
             spread.innerHTML = '';
@@ -712,19 +791,32 @@
         function showFinalResult() {
             document.getElementById('selectionArea').style.display = 'none';
             const resSection = document.getElementById('resultSection');
-            const resRow = document.getElementById('resultCardsRow');
-            const resContent = document.getElementById('resultContent');
+            const container = document.getElementById('detailedCardsContainer');
+            const summaryText = document.getElementById('summaryText');
 
-            resRow.innerHTML = '';
-            let shuffledPool = [...tarotImagesPool].sort(() => 0.5 - Math.random());
-            for(let i=0; i<3; i++) {
-                let img = document.createElement('img');
-                img.className = 'result-card-single';
-                img.src = shuffledPool[i].img;
-                resRow.appendChild(img);
-            }
+            container.innerHTML = '';
+            
+            let shuffledPool = [...fullTarotPool78].sort(() => 0.5 - Math.random());
+            let drawnResults = shuffledPool.slice(0, 3);
+            let slotTitles = currentLang === 'mm' ? ["၁။ အတိတ် (Past)", "၂။ ပစ္စုပ္ပန် (Present)", "၃။ အနာဂတ် (Future)"] : ["1. Past", "2. Present", "3. Future"];
 
-            resContent.innerHTML = translations[currentLang].readings.default;
+            drawnResults.forEach((card, idx) => {
+                let box = document.createElement('div');
+                box.className = 'single-card-result-box';
+                box.innerHTML = `
+                    <div style="font-size: 11px; color: #f3e76e; margin-bottom: 6px; font-weight: bold;">${slotTitles[idx]}</div>
+                    <div class="single-card-flex">
+                        <img class="result-card-single" src="${card.img}" alt="${card.nameMM}">
+                        <div class="card-details-text">
+                            <h4>${currentLang === 'mm' ? card.nameMM : card.nameEN}</h4>
+                            <p>${card.desc}</p>
+                        </div>
+                    </div>
+                `;
+                container.appendChild(box);
+            });
+
+            summaryText.innerHTML = translations[currentLang].summaryDefault;
             resSection.style.display = 'block';
             resSection.scrollIntoView({ behavior: 'smooth' });
         }
@@ -746,7 +838,6 @@
             }
         }
 
-        // Fetch Cloud Updates & Wallpaper from JSONbin automatically
         async function loadCloudUpdate() {
             try {
                 let response = await fetch('https://api.jsonbin.io/v3/b/6a9bbd0cda38895dfe3b586a/latest', {
@@ -784,4 +875,3 @@
     </script>
 </body>
 </html>
-
