@@ -144,11 +144,12 @@
             margin-bottom: 18px;
             cursor: pointer;
         }
+        /* သင်တင်ထားသော GitHub ပုံ (card-back.png) ကို ကဒ်ကျောခံအဖြစ် အတိအကျ ချိတ်ဆက်ထားခြင်း */
         .stacked-card {
             position: absolute;
             width: 120px;
             height: 180px;
-            background-image: url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=600&auto=format&fit=crop');
+            background-image: url('https://raw.githubusercontent.com/TarotByNwePoe/Tarot-By-Nwe-Poe-Eain/main/card-back.png');
             background-size: cover;
             background-position: center;
             border: 1.5px solid #d4af37;
@@ -212,7 +213,7 @@
             position: absolute;
             width: 52px;
             height: 90px;
-            background-image: url('https://images.unsplash.com/photo-1506703719100-a0f3a48c0f86?q=80&w=400&auto=format&fit=crop');
+            background-image: url('https://raw.githubusercontent.com/TarotByNwePoe/Tarot-By-Nwe-Poe-Eain/main/card-back.png');
             background-size: cover;
             background-position: center;
             border: 1.5px solid #d4af37;
@@ -509,7 +510,9 @@
             { nameMM: "ကံတရားဘီး (Wheel of Fortune)", nameEN: "Wheel of Fortune", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg", desc: "ကံတရား၏ အကောင်းဘက်သို့ ပြောင်းလဲလှည့်ပတ်မှုနှင့် အခွင့်အလမ်းကောင်းများ ပေါ်ပေါက်လာခြင်း။" },
             { nameMM: "ခွန်အား (Strength)", nameEN: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg", desc: "စိတ်ဓာတ်ကြံ့ခိုင်မှု၊ သည်းခံခြင်းနှင့် ချိုသာသော ဩဇာတိက္ကမဖြင့် ကျော်ဖြတ်နိုင်မည်။" },
             { nameMM: "ဒင်္ဂါးပြားများ၏ အစ (Ace of Pentacles)", nameEN: "Ace of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Pents01.jpg", desc: "ငွေကြေးဝင်ငွေ အခွင့်အလမ်းသစ်များနှင့် ရေရှည်တည်ငြိမ်မှု စတင်ပေါ်ပေါက်လာမည်။" },
-            { nameMM: "ဖလားများ၏ အစ (Ace of Cups)", nameEN: "Ace of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg", desc: "ရင်ခုန်စရာ မေတ္တာတရားများနှင့် စိတ်ခံစားချက်အသစ်များ ပြည့်ဝလာမည့် အချိန်ဖြစ်သည်။" }
+            { nameMM: "ဖလားများ၏ အစ (Ace of Cups)", nameEN: "Ace of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg", desc: "ရင်ခုန်စရာ မေတ္တာတရားများနှင့် စိတ်ခံစားချက်အသစ်များ ပြည့်ဝလာမည့် အချိန်ဖြစ်သည်။" },
+            { nameMM: "တရားမျှတမှု (Justice)", nameEN: "Justice", img: "https://upload.wikimedia.org/wikipedia/commons/9/95/RWS_Tarot_11_Justice.jpg", desc: "မှန်ကန်သော ဆုံးဖြတ်ချက်များ ချမှတ်နိုင်မည်ဖြစ်ပြီး လုပ်ရပ်အတွက် တရားမျှတသော ရလဒ်ကို ရရှိမည်။" },
+            { nameMM: "ကမ္ဘာဦး (The Fool)", nameEN: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg", desc: "ခရီးအသစ် စတင်ခြင်း၊ စွန့်စားလိုစိတ်များနှင့် အံ့သြစရာ အခွင့်အလမ်းများ ပေါ်ပေါက်လာခြင်း။" }
         ];
 
         const translations = {
@@ -521,7 +524,7 @@
                 c3: "ကျန်းမာရေး",
                 c4: "ပညာရေး",
                 subTitleDefault: "အမျိုးအစား ရွေးပါ။",
-                shuffleBtnText: "✨ ကဒ်ကို မွှေမည် (4s)",
+                shuffleBtnText: "✨ ကဒ်ကို မွှေမည် ",
                 bookingBtnText: "💬 ဆရာမနဲ့ တိုက်ရိုက်မေးမြန်းရန်",
                 footerText: "© 2026 Nwe Poe Eain Tarot · All Rights Reserved",
                 loveOpts: [
@@ -563,8 +566,7 @@
                 eduOpts: [
                     { id: 'e_1', title: 'လက်ရှိပညာရေး' },
                     { id: 'e_2', title: 'စာမေးပွဲအောင်နိုင်လား' }
-                ],
-                summaryDefault: "ရွေးချယ်ထားသော ကဒ်သုံးချပ်၏ စွမ်းအင်အရ သင့်ရဲ့ မေးခွန်းအတွက် အတိတ်၊ ပစ္စုပ္ပန်နှင့် အနာဂတ် လမ်းညွှန်ချက်များ အကောင်းဘက်သို့ ဦးတည်နေပြီး စိတ်ချမ်းသာမှုနှင့် အောင်မြင်မှုများကို ပိုင်ဆိုင်ရပါလိမ့်မည်။"
+                ]
             },
             eng: {
                 brandSub: "Astrology & Tarot Reading",
@@ -616,8 +618,7 @@
                 eduOpts: [
                     { id: 'e_1', title: 'Current academic progress' },
                     { id: 'e_2', title: 'Exam success likelihood' }
-                ],
-                summaryDefault: "Based on the energies of the selected cards, your path indicates positive guidance from past to future, bringing you rewarding and harmonious outcomes."
+                ]
             }
         };
 
@@ -713,7 +714,6 @@
             }
         }
 
-        // Website ထဲဝင်ပြီး ဘယ်နေရာကိုမဆို ပထမဆုံး နှိပ်လိုက်တာနဲ့ သီချင်း အလိုအလျောက် စတင်ရန်
         document.addEventListener('click', function initAudioPlay() {
             if (!isPlaying) {
                 audio.play().then(() => {
@@ -735,7 +735,7 @@
                 });
             }, 300);
 
-            document.getElementById('shuffleBtn').textContent = "✨ မွှေနေသည် (4s)...";
+            document.getElementById('shuffleBtn').textContent = "✨ မွှေနေသည် ...";
             document.getElementById('shuffleBtn').style.opacity = "0.7";
             document.getElementById('shuffleBtn').style.pointerEvents = "none";
 
@@ -832,7 +832,11 @@
                 container.appendChild(box);
             });
 
-            summaryText.innerHTML = translations[currentLang].summaryDefault;
+            let dynamicSummary = currentLang === 'mm' 
+                ? `ရွေးချယ်ထားသော ကဒ်များ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နှင့် ${drawnResults[2].nameMM}) ၏ စွမ်းအင်အရ သင့်ရဲ့ မေးခွန်းအတွက် အတိတ်ကာလက သင်ခန်းစာများက လက်ရှိဘဝကို အကျိုးပြုနေပြီး၊ အနာဂတ်တွင် ရည်မှန်းချက်များ အထမြောက်အောင်မြင်ကာ သာယာဝပြောမှုကို ပိုင်ဆိုင်ရပါလိမ့်မည်။`
+                : `Based on the combined energies of your drawn cards (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}), your path indicates successful growth and rewarding outcomes ahead.`;
+
+            summaryText.innerHTML = dynamicSummary;
             resSection.style.display = 'block';
             resSection.scrollIntoView({ behavior: 'smooth' });
         }
