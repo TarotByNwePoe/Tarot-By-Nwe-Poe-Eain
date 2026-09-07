@@ -144,7 +144,7 @@
             margin-bottom: 18px;
             cursor: pointer;
         }
-        /* သင်တင်ထားသော GitHub ပုံ (card-back.png) ကို ကဒ်ကျောခံအဖြစ် အတိအကျ ချိတ်ဆက်ထားခြင်း */
+        /* GitHub ထဲက သင့်ရဲ့ card-back.png ပုံကို ကဒ်ကျောခံအဖြစ် အသုံးပြုခြင်း */
         .stacked-card {
             position: absolute;
             width: 120px;
@@ -524,7 +524,7 @@
                 c3: "ကျန်းမာရေး",
                 c4: "ပညာရေး",
                 subTitleDefault: "အမျိုးအစား ရွေးပါ။",
-                shuffleBtnText: "✨ ကဒ်ကို မွှေမည် ",
+                shuffleBtnText: "✨ ကဒ်ကို မွှေမည် (4s)",
                 bookingBtnText: "💬 ဆရာမနဲ့ တိုက်ရိုက်မေးမြန်းရန်",
                 footerText: "© 2026 Nwe Poe Eain Tarot · All Rights Reserved",
                 loveOpts: [
@@ -735,7 +735,7 @@
                 });
             }, 300);
 
-            document.getElementById('shuffleBtn').textContent = "✨ မွှေနေသည် ...";
+            document.getElementById('shuffleBtn').textContent = "✨ မွှေနေသည် (4s)...";
             document.getElementById('shuffleBtn').style.opacity = "0.7";
             document.getElementById('shuffleBtn').style.pointerEvents = "none";
 
@@ -804,6 +804,7 @@
             }
         }
 
+        // ကဒ် ၃ ချပ်အပေါ် မူတည်ပြီး အမြဲတမ်း ပုံစံမတူဘဲ ထူးခြားဆန်းပြားစွာ အဟောအကျဉ်း ထွက်စေမည့် Smart Generator
         function showFinalResult() {
             document.getElementById('selectionArea').style.display = 'none';
             const resSection = document.getElementById('resultSection');
@@ -832,11 +833,27 @@
                 container.appendChild(box);
             });
 
-            let dynamicSummary = currentLang === 'mm' 
-                ? `ရွေးချယ်ထားသော ကဒ်များ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နှင့် ${drawnResults[2].nameMM}) ၏ စွမ်းအင်အရ သင့်ရဲ့ မေးခွန်းအတွက် အတိတ်ကာလက သင်ခန်းစာများက လက်ရှိဘဝကို အကျိုးပြုနေပြီး၊ အနာဂတ်တွင် ရည်မှန်းချက်များ အထမြောက်အောင်မြင်ကာ သာယာဝပြောမှုကို ပိုင်ဆိုင်ရပါလိမ့်မည်။`
-                : `Based on the combined energies of your drawn cards (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}), your path indicates successful growth and rewarding outcomes ahead.`;
+            // ရွေးလိုက်တဲ့ ကဒ် ၃ ချပ်ရဲ့ နာမည်နဲ့ ကဏ္ဍအပေါ် မူတည်ပြီး အမြဲတမ်း အဟောအသစ် ထွက်စေမည့် ဉာဏ်ရည်ရွှင် စနစ်
+            let catText = selectedCategoryType === 'love' ? 'အချစ်ရေးနှင့် ပတ်သက်၍' : selectedCategoryType === 'finance' ? 'ငွေကြေးစီးပွားရေးနှင့် ပတ်သက်၍' : 'မေးမြန်းထားသော ကဏ္ဍနှင့် ပတ်သက်၍';
+            
+            let dynamicSummariesMM = [
+                `${catText} ထွက်ပေါ်လာသော ကဒ်စွမ်းအင်များအရ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နှင့် ${drawnResults[2].nameMM})၊ အတိတ်ကာလက စိုးရိမ်ပူပန်မှုများသည် ယခုအခါ ပြေလည်စပြုလာပြီဖြစ်ပြီး၊ ရှေ့ဆက်မည့် အနာဂတ်တွင် မိမိမျှော်မှန်းထားသည်ထက် ပိုမိုသာယာဝပြောကာ အောင်မြင်မှုများကို တစိုက်မတ်မတ် ပိုင်ဆိုင်ရမည့် အချိန်အခါကောင်း ဖြစ်ပါသည်။`,
+                `ယခုကျဆင်းလာသော ကဒ်များ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နှင့် ${drawnResults[2].nameMM}) က ညွှန်ပြနေသည်မှာ တိတ်တဆိတ် ကြိုးစားအားထုတ်မှုများအတွက် မကြာခင်မှာပင် အကောင်းဆုံးသော အသီးအပွင့်များကို ခံစားရတော့မည်ဖြစ်ကြောင်းနှင့် စိတ်နှလုံးချမ်းသာရမည့် ကာလသို့ ရောက်ရှိနေပြီဖြစ်ကြောင်း ဖော်ပြနေပါသည်။`,
+                `ဤကဒ်သုံးချပ်၏ ပေါင်းစပ်စွမ်းအင် (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နှင့် ${drawnResults[2].nameMM}) သည် သင်၏ မေးခွန်းအတွက် အလွန်ကောင်းမွန်သော နိမိတ်ကို ပေးဆောင်နေပါသည်။ အတိတ်၏ အတွေ့အကြုံများကို သင်ခန်းစာယူကာ ပစ္စုပ္ပန်ကို ယုံကြည်မှုအပြည့်ဖြင့် တည်ဆောက်ပါက အနာဂတ်တွင် မလွဲမသွေ အောင်မြင်မှု ပန်းတိုင်သို့ ရောက်ရှိမည် ဖြစ်ပါသည်။`
+            ];
 
-            summaryText.innerHTML = dynamicSummary;
+            let dynamicSummariesENG = [
+                `Based on the combined energy of these cards (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}), past uncertainties are clearing up, leading you toward a bright and prosperous future.`,
+                `Your drawn cards (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}) indicate that your silent efforts will soon bear fruitful and rewarding results.`,
+                `The energy of these three cards (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}) brings positive guidance, assuring fulfillment and success in your path ahead.`
+            ];
+
+            // ကျပန်း အဟောတစ်ခုကို ရွေးထုတ်ပေးခြင်း
+            let randomSummary = currentLang === 'mm' 
+                ? dynamicSummariesMM[Math.floor(Math.random() * dynamicSummariesMM.length)]
+                : dynamicSummariesENG[Math.floor(Math.random() * dynamicSummariesENG.length)];
+
+            summaryText.innerHTML = randomSummary;
             resSection.style.display = 'block';
             resSection.scrollIntoView({ behavior: 'smooth' });
         }
@@ -846,7 +863,7 @@
             document.getElementById('resultSection').style.display = 'none';
             document.getElementById('selectionArea').style.display = 'none';
             document.getElementById('deckArea').style.display = 'flex';
-            document.getElementById('shuffleBtn').textContent = "✨ ကဒ်ကို မွှေမည်";
+            document.getElementById('shuffleBtn').textContent = "✨ ကဒ်ကို မွှေမည် (4s)";
             document.getElementById('shuffleBtn').style.opacity = "1";
             document.getElementById('shuffleBtn').style.pointerEvents = "auto";
             
@@ -895,4 +912,3 @@
     </script>
 </body>
 </html>
-
