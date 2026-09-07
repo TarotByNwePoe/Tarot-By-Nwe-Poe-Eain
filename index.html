@@ -202,7 +202,7 @@
         .cards-spread-deck {
             position: relative;
             width: 100%;
-            height: 140px;
+            height: 150px;
             margin: 20px 0;
             display: flex;
             justify-content: center;
@@ -210,26 +210,27 @@
         }
         .spread-card-item {
             position: absolute;
-            width: 52px;
-            height: 90px;
+            width: 55px;
+            height: 95px;
             background-image: url('card-back.png');
             background-size: cover;
             background-position: center;
             border: 1.5px solid #d4af37;
             border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.3s, box-shadow 0.3s;
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             transform-origin: bottom center;
         }
         .spread-card-item:hover { 
-            transform: translateY(-15px) scale(1.1) !important; 
-            box-shadow: 0 8px 22px rgba(212, 175, 55, 0.7);
+            transform: translateY(-20px) scale(1.15) !important; 
+            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.8);
             z-index: 100;
         }
         .spread-card-item.chosen {
             opacity: 0.2;
             pointer-events: none;
+            transform: translateY(-30px) scale(0.9) !important;
         }
 
         .result-section {
@@ -741,6 +742,11 @@
                     sBox.style.fontSize = "12px";
                     sBox.style.background = "rgba(25, 55, 42, 0.5)";
                     sBox.textContent = "🔹 " + sub.title;
+                    sBox.onclick = () => {
+                        document.querySelectorAll('#subOptionsContainer div div').forEach(d => d.style.borderColor = 'rgba(212, 175, 55, 0.3)');
+                        sBox.style.borderColor = '#f3e76e';
+                        selectedSubOption = sub.id;
+                    };
                     subContainer.appendChild(sBox);
                 });
                 container.appendChild(subContainer);
@@ -752,8 +758,12 @@
 
                 options.forEach(opt => {
                     let box = document.createElement('div');
-                    box.className = `sub-option-box`;
+                    box.className = `sub-option-box ${opt.id === selectedSubOption ? 'active' : ''}`;
                     box.textContent = opt.title;
+                    box.onclick = () => {
+                        selectedSubOption = opt.id;
+                        updateSubOptions(type);
+                    };
                     container.appendChild(box);
                 });
             }
@@ -764,6 +774,9 @@
             element.classList.add('active');
             selectedCategoryType = type;
             if(type === 'love') selectedSubOption = 'rs_active';
+            else if(type === 'finance') selectedSubOption = 'f_1';
+            else if(type === 'health') selectedSubOption = 'h_1';
+            else if(type === 'education') selectedSubOption = 'e_1';
             updateSubOptions(type);
             resetApp();
         }
@@ -838,16 +851,16 @@
             chosenCards = [];
             updateSlotsUI();
 
-            let totalCards = 12;
-            let angleRange = 120;
-            let startAngle = -60;
+            let totalCards = 14;
+            let angleRange = 130;
+            let startAngle = -65;
 
             for(let i=0; i<totalCards; i++) {
                 let cardItem = document.createElement('div');
                 cardItem.className = 'spread-card-item';
                 
                 let angle = startAngle + (i * (angleRange / (totalCards - 1)));
-                let xOffset = (i - totalCards / 2) * 14;
+                let xOffset = (i - totalCards / 2) * 16;
                 
                 cardItem.style.transform = `translateX(${xOffset}px) rotate(${angle}deg)`;
                 cardItem.style.transformOrigin = "bottom center";
@@ -917,23 +930,32 @@
                 container.appendChild(box);
             });
 
-            let conversationalSummariesMM = [
-                `ဟော... ဒီကဒ်သုံးချပ် ပေါင်းစပ်လာတဲ့ ပုံစံအရဆိုရင်လေ... အရင်တုန်းက ကိုယ်ဖြတ်သန်းခဲ့ရတဲ့ အဖုအထစ်တွေ၊ စိတ်ညစ်စရာလေးတွေက အခုဆိုရင် တဖြည်းဖြည်းနဲ့ အဖြေပေါ်လာပြီး ပြေလည်သွားမယ့် အချိန်ရောက်လာပြီ။ ရှေ့ဆက်ရမယ့် အနာဂတ်မှာလည်း ကိုယ်မျှော်လင့်ထားတာထက် ပိုပြီး အဆင်ပြေချောမွေ့တာတွေနဲ့ ရင်ဆိုင်ရဖို့ ရှိနေတယ်နော်၊ စိတ်ချလက်ချ ရှေ့ဆက်လိုက်တော့နော်။`,
-                `ဒီတစ်ခါ ကျလာတဲ့ ကဒ်စွမ်းအင်တွေကို ကြည့်ရတာ... ကိုယ်က တိတ်တဆိတ်နဲ့ အများကြီး ကြိုးစားနေရတယ်ဆိုတာ ဒီကဒ်တွေက အကုန်ဖော်ပြနေတယ်။ အဲ့ဒီလို ရိုးသားစွာနဲ့ ကြိုးစားခဲ့ရကျိုးတွေက မကြာခင်မှာ တကယ်လက်တွေ့ ဖြစ်လာတော့မှာပါ။ စိတ်ကို ပေါ့ပေါ့ပါးပါးထားပြီး ကိုယ့်ရဲ့ကံကြမ္မာအပေါ် ယုံကြည်မှုအပြည့်နဲ့ ဆက်သွားပါ။`,
-                `အဟမ်း... ဒီကဒ်သုံးချပ်ရဲ့ အဓိပ္ပာယ်ကတော့ တော်တော်လေး စိတ်ချမ်းသာစရာ ကောင်းပါတယ်။ အတိတ်က အတွေ့အကြုံတွေကနေ သင်ခန်းစာကောင်းတွေ ရခဲ့ပြီဖြစ်လို့၊ လက်ရှိအချိန်မှာ ကိုယ့်ဘဝကို ပိုပြီး ခိုင်မာအောင် တည်ဆောက်နိုင်နေပြီ။ လာမယ့်ရက်တွေမှာဆိုရင် ကိုယ်မျှော်လင့်စောင့်စားနေတဲ့ အခွင့်အရေးကောင်းတွေ တကယ်ကို ဝင်လာတော့မှာပါနော်။`
-            ];
+            // ရွေးလိုက်တဲ့ ခေါင်းစဉ်အသေး (Sub-option) အလိုက် တကယ့်လူပြောစကားဆန်ဆန် သဘာဝကျတဲ့ အဟောများ
+            let conversationalSummary = "";
 
-            let conversationalSummariesENG = [
-                `Looking at these three cards together... whatever stress or bumps you faced in the past are finally clearing up. The future holds much smoother and happier days ahead for you, so just relax and keep going!`,
-                `The energy of these cards shows that you've been working hard quietly behind the scenes. All those genuine efforts are about to pay off in reality very soon. Trust your journey!`,
-                `This is such a lovely spread! Your past lessons have made you so much stronger now. Expect wonderful new opportunities and positive vibes knocking on your door real soon.`
-            ];
+            if (selectedSubOption === 'e_2') {
+                // ပညာရေး - စာမေးပွဲအောင်နိုင်လား
+                conversationalSummary = currentLang === 'mm'
+                    ? `စာမေးပွဲနဲ့ ပတ်သက်ပြီး စိုးရိမ်နေတာလား... ဒီကျလာတဲ့ ကဒ်စွမ်းအင်တွေအရ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ကိုယ် တိတ်တဆိတ် ကြိုးစားထားတာတွေ၊ အပင်ပန်းခံ ဖတ်မှတ်ထားတာတွေအတွက် တကယ်ကို ကျေနပ်စရာကောင်းတဲ့ အောင်မြင်မှု အသီးအပွင့်တွေကို မုချ ခံစားရမှာပါနော်။ ယုံကြည်မှုအပြည့်နဲ့သာ ဖြေဆိုလိုက်ပါ၊ စိတ်ချမ်းသာရမယ့် ရလဒ်ကောင်း သေချာပေါက် ပိုင်ဆိုင်ရပါလိမ့်မယ်။`
+                    : `Regarding your exams... the cards (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}) show that all your hard work and late-night studying will definitely pay off. Go in with confidence and expect great results!`;
+            } else if (selectedSubOption === 'e_1') {
+                // ပညာရေး - လက်ရှိပညာရေး
+                conversationalSummary = currentLang === 'mm'
+                    ? `ပညာရေးနဲ့ ပတ်သက်ပြီး လက်ရှိအခြေအနေကို ကြည့်ရတာ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ကိုယ်က စိတ်ရောကိုယ်ပါ အာရုံစိုက်ပြီး အကောင်းဆုံး ကြိုးစားနေတာ တွေ့ရတယ်။ အရင်က အခက်အခဲလေးတွေကို ကျော်ဖြတ်နိုင်ခဲ့ပြီဖြစ်လို့ ရှေ့ဆက်ရမယ့် လမ်းကြောင်းမှာလည်း တည်ငြိမ်မှုတွေနဲ့ အောင်မြင်မှုတွေ ဆက်တိုက် ရောက်လာတော့မှာပါနော်။`
+                    : `Looking at your current academic path through these cards (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}), you've been putting in sincere effort. Having overcome past hurdles, steady progress and success are heading your way.`;
+            } else if (selectedSubOption === 'rs_active' || selectedSubOption === 'rs_1' || selectedSubOption === 'rs_2' || selectedSubOption === 'rs_3') {
+                // အချစ်ရေး - လက်ရှိချစ်သူ
+                conversationalSummary = currentLang === 'mm'
+                    ? `အချစ်ရေးနဲ့ ပတ်သက်လို့ ဒီကဒ်တွေက (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ဘာကိုပြနေလဲဆိုတော့... နှစ်ယောက်ကြားမှာ ရှိတဲ့ နားလည်မှုတွေက တဖြည်းဖြည်းနဲ့ ပိုခိုင်မာလာနေတယ်။ အတိတ်က သံသယတွေ ဒါမှမဟုတ် အဖုအထစ်လေးတွေ ရှိခဲ့ရင်တောင် အခုဆိုရင် အဖြေပေါ်လာပြီး ပိုတူတူရှေ့ဆက်လို့ကောင်းမယ့် အချိန်ရောက်လာပါပြီနော်။`
+                    : `Regarding your relationship, these cards (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}) indicate that mutual understanding is growing stronger. Any past bumps are clearing up, making way for a harmonious connection.`;
+            } else {
+                // အထွေထွေနှင့် အခြားခေါင်းစဉ်များအတွက် ဖော်ရွေသော လူပြောစကားဆန်ဆန် အဟော
+                conversationalSummary = currentLang === 'mm'
+                    ? `ဟော... ဒီကဒ်သုံးချပ် ပေါင်းစပ်လာတဲ့ ပုံစံအရဆိုရင်လေ... (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) အရင်တုန်းက ကိုယ်ဖြတ်သန်းခဲ့ရတဲ့ အဖုအထစ်တွေ၊ စိတ်ညစ်စရာလေးတွေက အခုဆိုရင် တဖြည်းဖြည်းနဲ့ အဖြေပေါ်လာပြီး ပြေလည်သွားမယ့် အချိန်ရောက်လာပြီ။ ရှေ့ဆက်ရမယ့် အနာဂတ်မှာလည်း ကိုယ်မျှော်လင့်ထားတာထက် ပိုပြီး အဆင်ပြေချောမွေ့တာတွေနဲ့ ရင်ဆိုင်ရဖို့ ရှိနေတယ်နော်။`
+                    : `Looking at this combination (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}), whatever stress or bumps you faced previously are finally clearing up. Smoother days and happier outcomes are ahead for you!`;
+            }
 
-            let randomSummary = currentLang === 'mm' 
-                ? conversationalSummariesMM[Math.floor(Math.random() * conversationalSummariesMM.length)]
-                : conversationalSummariesENG[Math.floor(Math.random() * conversationalSummariesENG.length)];
-
-            summaryText.innerHTML = randomSummary;
+            summaryText.innerHTML = conversationalSummary;
             resSection.style.display = 'block';
             resSection.scrollIntoView({ behavior: 'smooth' });
         }
@@ -992,4 +1014,3 @@
     </script>
 </body>
 </html>
-
