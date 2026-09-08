@@ -154,7 +154,7 @@
             border: 1.5px solid #d4af37;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
+            transition: transform 0.4s ease;
         }
 
         .action-lux-btn {
@@ -199,54 +199,38 @@
             font-weight: bold;
         }
 
-        /* Smooth & Fluid Card Spread Area */
+        /* 🌟 New Interactive Modern Grid Card Picking Style */
         .cards-spread-deck {
-            position: relative;
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 10px;
             width: 100%;
-            height: 155px;
-            margin: 20px 0;
-            display: flex;
-            justify-content: center;
-            align-items: flex-end;
-            perspective: 1000px;
+            margin: 15px 0;
+            max-height: 280px;
+            overflow-y: auto;
+            padding: 5px;
         }
         .spread-card-item {
-            position: absolute;
-            width: 55px;
-            height: 95px;
+            width: 100%;
+            aspect-ratio: 2/3;
             background-image: url('card-back.png');
             background-size: cover;
             background-position: center;
             border: 1.5px solid #d4af37;
-            border-radius: 8px;
+            border-radius: 10px;
             cursor: pointer;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.5);
-            transform-origin: bottom center;
-            will-change: transform, opacity;
-            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, opacity 0.3s ease;
-            animation: cardAppear 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
-            opacity: 0;
+            transition: all 0.25s ease;
+            box-shadow: 0 4px 12px rgba(0,0,0,0.5);
         }
-
-        @keyframes cardAppear {
-            0% {
-                transform: translateY(40px) scale(0.5) rotate(0deg);
-                opacity: 0;
-            }
-            100% {
-                opacity: 1;
-            }
-        }
-
-        .spread-card-item:hover { 
-            transform: translateY(-22px) scale(1.15) !important; 
-            box-shadow: 0 12px 28px rgba(212, 175, 55, 0.85);
-            z-index: 100;
+        .spread-card-item:hover {
+            transform: translateY(-6px) scale(1.05);
+            box-shadow: 0 8px 20px rgba(212, 175, 55, 0.7);
+            border-color: #fff;
         }
         .spread-card-item.chosen {
             opacity: 0.25;
             pointer-events: none;
-            transform: translateY(-35px) scale(0.85) !important;
+            transform: scale(0.9);
         }
 
         .result-section {
@@ -307,8 +291,8 @@
             text-align: center;
         }
         .summary-box p {
-            font-size: 12px;
-            line-height: 1.7;
+            font-size: 13px;
+            line-height: 1.8;
             color: #eaf4f1;
         }
 
@@ -433,7 +417,7 @@
         <div class="section-title" id="subTitleText" style="font-size: 13px; color: #f3e76e; margin-top: 10px;">အမျိုးအစား ရွေးပါ။</div>
         <div class="sub-options-container" id="subOptionsContainer"></div>
 
-        <!-- Luxury Deck & Shuffle Area (4 seconds animation) -->
+        <!-- Luxury Deck & Shuffle Area -->
         <div class="deck-area" id="deckArea">
             <div class="card-stack-container" onclick="startShuffle()">
                 <div class="stacked-card" style="transform: rotate(-6deg) translateY(-4px);"></div>
@@ -451,7 +435,7 @@
                 <div class="slot-box" id="slot1">၂ ခုမြောက်</div>
                 <div class="slot-box" id="slot2">၃ ခုမြောက်</div>
             </div>
-            <p style="text-align: center; font-size: 11px; color: #a3c1ad; margin-bottom: 5px;">အောက်ပါ ကဒ်တန်းမှ ကြိုက်နှစ်သက်ရာ ရွေးပါ</p>
+            <p style="text-align: center; font-size: 11px; color: #a3c1ad; margin-bottom: 5px;">အောက်ပါ ကဒ်များထဲမှ ၃ ချပ်ကို နှိပ်၍ ရွေးပါ</p>
             <div class="cards-spread-deck" id="spreadDeck"></div>
         </div>
 
@@ -518,7 +502,6 @@
 
         // တာရော့တ်ကဒ် ၇၈ ချပ် အစုံအလင်
         const fullTarotPool78 = [
-            // Major Arcana (၂၂ ချပ်)
             { nameMM: "ကမ္ဘာဦး (The Fool)", nameEN: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg", desc: "စိတ်လှုပ်ရှားစရာ ခရီးအသစ်နဲ့ အတွေ့အကြုံသစ်တွေကို ရင်ခုန်စွာနဲ့ စတင်လိုက်တော့မယ့် အချိန်ပါပဲ။" },
             { nameMM: "မှော်ဆရာ (The Magician)", nameEN: "The Magician", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg", desc: "သင့်ရဲ့ အစွမ်းအလက်တွေနဲ့ လုပ်ဆောင်ချက်တွေက အောင်မြင်မှုဆီ တန်းတန်းမတ်မတ် ပို့ဆောင်ပေးနေပါတယ်။" },
             { nameMM: "မဟာပညာရှိ (The High Priestess)", nameEN: "The High Priestess", img: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg", desc: "အတွင်းစိတ်ရဲ့ အသိဉာဏ်နဲ့ ထိုးထွင်းသိမြင်မှုကို ယုံကြည်ပြီး ဆုံးဖြတ်ရမယ့် ကာလဖြစ်ပါတယ်။" },
@@ -541,70 +524,10 @@
             { nameMM: "နေမင်းကြီး (The Sun)", nameEN: "The Sun", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg", desc: "ပျော်ရွှင်မှု၊ အောင်မြင်မှုနဲ့ တောက်ပတဲ့ အနာဂတ်က သင့်ရှေ့မှာ အသင့်စောင့်ကြိုနေပါတယ်။" },
             { nameMM: "တရားစီရင်ခြင်း (Judgement)", nameEN: "Judgement", img: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg", desc: "အတိတ်ရဲ့ လုပ်ရပ်တွေအတွက် အဖြေပေါ်လာပြီး ဘဝရဲ့ အရေးကြီးတဲ့ ခေါ်သံကို ကြားရပါမယ်။" },
             { nameMM: "ကမ္ဘာလောက (The World)", nameEN: "The World", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg", desc: "အခက်အခဲတွေ အားလုံးကို ကျော်ဖြတ်ပြီး အဆင့်သစ်တစ်ခုဆီ အောင်မြင်စွာ တက်လှမ်းနိုင်ပါပြီ။" },
-
-            // Cups Suit (၁၄ ချပ်)
             { nameMM: "ဖလားများ၏ အစ (Ace of Cups)", nameEN: "Ace of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg", desc: "ရင်ထဲမှာ နွေးထွေးတဲ့ ခံစားချက်တွေနဲ့အတူ မေတ္တာရေးရာမှာ ပျော်ရွှင်စရာတွေ ပိုင်ဆိုင်ရပါမယ်။" },
-            { nameMM: "ဖလား နှစ်လုံး (Two of Cups)", nameEN: "Two of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/Cups02.jpg", desc: "နှစ်ဦးသဘောတူညီမှု၊ အပြန်အလှန် ချစ်ခင်လေးစားမှုနဲ့ ဖက်စပ်ဆက်ဆံရေးကောင်းတွေ ပေါ်လာပါမယ်။" },
-            { nameMM: "ဖလား သုံးလုံး (Three of Cups)", nameEN: "Three of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Cups03.jpg", desc: "တွေ့ဆုံပျော်ရွှင်ရခြင်း၊ အောင်ပွဲခံခြင်းနဲ့ မိတ်ဆွေအပေါင်းအသင်းတွေနဲ့ ပျော်ရွှင်ရမယ့်အချိန်ပါ။" },
-            { nameMM: "ဖလား လေးလုံး (Four of Cups)", nameEN: "Four of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Cups04.jpg", desc: "လက်ရှိအခြေအနေအပေါ် ငြီးငွေ့တာမျိုးဖြစ်တတ်ပြီး အခွင့်အလမ်းသစ်တွေကို သတိထားမိဖို့လိုပါတယ်။" },
-            { nameMM: "ဖလား ငါးလုံး (Five of Cups)", nameEN: "Five of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Cups05.jpg", desc: "ဆုံးရှုံးမှုအပေါ်မှာပဲ အာရုံမစိုက်ဘဲ ကျန်ရှိနေသေးတဲ့ အကောင်းဘက်ကို ပြန်ကြည့်ဖို့ လိုပါတယ်။" },
-            { nameMM: "ဖလား ခြောက်လုံး (Six of Cups)", nameEN: "Six of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/Cups06.jpg", desc: "အတိတ်က မိတ်ဆွေဟောင်းတွေ၊ ရင်းနှီးတဲ့ အမှတ်တရဟောင်းတွေ ပြန်လည်ပေါ်ပေါက်လာပါမယ်။" },
-            { nameMM: "ဖလား ခုနစ်လုံး (Seven of Cups)", nameEN: "Seven of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Cups07.jpg", desc: "ရွေးချယ်စရာတွေ များပြားနေပြီး အာရုံမစိုက်နိုင်ဖြစ်နေတာမျိုးကို သတိပြုရပါမယ်။" },
-            { nameMM: "ဖလား ရှစ်လုံး (Eight of Cups)", nameEN: "Eight of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/6/60/Cups08.jpg", desc: "မကျေနပ်စရာ အခြေအနေတစ်ခုကို စွန့်ခွာပြီး ပိုမိုကောင်းမွန်တဲ့ လမ်းကြောင်းဆီကို ထွက်ခွာလာခြင်းပါ။" },
-            { nameMM: "ဖလား ကိုးလုံး (Nine of Cups)", nameEN: "Nine of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/2/24/Cups09.jpg", desc: "ဆန္ဒတွေပြည့်ဝခြင်း၊ စိတ်ကျေနပ်မှုနဲ့ ပျော်ရွှင်စရာ အခိုက်အတန့်တွေကို ပိုင်ဆိုင်ရပါမယ်။" },
-            { nameMM: "ဖလား ၁၀ လုံး (Ten of Cups)", nameEN: "Ten of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/8/84/Cups10.jpg", desc: "မိသားစုဘဝ သာယာခြင်း၊ စစ်မှန်တဲ့ မေတ္တာနဲ့ ရေရှည်တည်မြဲတဲ့ ပျော်ရွှင်မှုကို ရရှိပါမယ်။" },
-            { nameMM: "ဖလား စာရေး (Page of Cups)", nameEN: "Page of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cups01.jpg", desc: "ရင်ခုန်စရာ သတင်းစကားကောင်းတွေနဲ့ ဖန်တီးနိုင်စွမ်းအသစ်တွေ ဝင်ရောက်လာပါမယ်။" },
-            { nameMM: "ဖလား သူရဲကောင်း (Knight of Cups)", nameEN: "Knight of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/f/fa/Cups01.jpg", desc: "အချစ်ရေးနဲ့ ပတ်သက်ပြီး ရိုမန်တစ်ဆန်ဆန် ချဉ်းကပ်မှုတွေနဲ့ ကမ်းလှမ်းမှုတွေ ရှိလာပါမယ်။" },
-            { nameMM: "ဖလား မဟေသီ (Queen of Cups)", nameEN: "Queen of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/c/c5/Cups01.jpg", desc: "ကြင်နာတတ်တဲ့ စိတ်ထား၊ နားလည်ပေးနိုင်မှုနဲ့ စိတ်ခံစားချက်ပိုင်းဆိုင်ရာ တည်ငြိမ်မှု ရှိပါတယ်။" },
-            { nameMM: "ဖလား ဘုရင် (King of Cups)", nameEN: "King of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/0/04/Cups01.jpg", desc: "စိတ်ခံစားချက်ကို သင့်တင့်မျှတအောင် ထိန်းချုပ်နိုင်ပြီး ရင့်ကျက်တဲ့ အကြံဉာဏ်တွေ ပေးနိုင်ပါတယ်။" },
-
-            // Pentacles Suit (၁၄ ချပ်)
             { nameMM: "ဒင်္ဂါးပြားများ၏ အစ (Ace of Pentacles)", nameEN: "Ace of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/f/fd/Pents01.jpg", desc: "ငွေကြေးနဲ့ စီးပွားရေးဘက်မှာ လက်တွေ့ကျတဲ့ အခွင့်အလမ်းကောင်းတွေ စတင်ပေါ်ပေါက်လာပါလိမ့်မယ်။" },
-            { nameMM: "ဒင်္ဂါး နှစ်ပြား (Two of Pentacles)", nameEN: "Two of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/9/9f/Pents02.jpg", desc: "ဘဝရဲ့ တာဝန်နဲ့ ငွေကြေးကိစ္စတွေကို မျှတအောင် ထိန်းသိမ်းလုပ်ကိုင်ရမယ့် အချိန်ပါ။" },
-            { nameMM: "ဒင်္ဂါး သုံးပြား (Three of Pentacles)", nameEN: "Three of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/2/26/Pents03.jpg", desc: "အသင်းအဖွဲ့နဲ့ ပူးပေါင်းဆောင်ရွက်မှုတွေကနေတဆင့် အောင်မြင်မှုနဲ့ အသိအမှတ်ပြုမှု ရရှိပါမယ်။" },
-            { nameMM: "ဒင်္ဂါး လေးပြား (Four of Pentacles)", nameEN: "Four of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/b/b3/Pents04.jpg", desc: "ငွေကြေးကို တင်းတင်းကျပ်ကျပ် ကိုင်တွယ်တာနဲ့ လက်ရှိပိုင်ဆိုင်မှုကို ထိန်းသိမ်းလိုစိတ် များနေပါတယ်။" },
-            { nameMM: "ဒင်္ဂါး ငါးပြား (Five of Pentacles)", nameEN: "Five of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/9/9a/Pents05.jpg", desc: "စီးပွားရေးအရ ကျပ်တည်းမှု ဒါမှမဟုတ် အကူအညီလိုအပ်တဲ့ အခြေအနေမျိုးနဲ့ ကြုံရနိုင်ပါတယ်။" },
-            { nameMM: "ဒင်္ဂါး ခြောက်ပြား (Six of Pentacles)", nameEN: "Six of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/a/a6/Pents06.jpg", desc: "အပြန်အလှန် ပေးကမ်းကူညီခြင်း၊ ငွေကြေး အဆင်ပြေချောမွေ့မှုတွေ ရရှိမယ့် ကာလပါ။" },
-            { nameMM: "ဒင်္ဂါး ခုနစ်ပြား (Seven of Pentacles)", nameEN: "Seven of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Pents07.jpg", desc: "စိုက်ထုတ်ထားတဲ့ ကြိုးစားအားထုတ်မှုတွေရဲ့ ရလဒ်ကို စိတ်ရှည်ရှည်နဲ့ စောင့်ဆိုင်းရမယ့်အချိန်ပါ။" },
-            { nameMM: "ဒင်္ဂါး ရှစ်ပြား (Eight of Pentacles)", nameEN: "Eight of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Pents08.jpg", desc: "ကျွမ်းကျင်မှုအသစ်တွေကို လေ့လာခြင်းနဲ့ လုပ်ငန်းခွင်မှာ စိတ်စိုက်လုပ်ကိုင်ခြင်းတို့ အောင်မြင်ပါမယ်။" },
-            { nameMM: "ဒင်္ဂါး ကိုးပြား (Nine of Pentacles)", nameEN: "Nine of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Pents09.jpg", desc: "ကိုယ်ပိုင်အရည်အချင်းနဲ့ ကြိုးစားမှုကြောင့် သက်တောင့်သက်သာရှိပြီး ပြည့်စုံတဲ့ ဘဝကို ပိုင်ဆိုင်ရပါမယ်။" },
-            { nameMM: "ဒင်္ဂါး ၁၀ ပြား (Ten of Pentacles)", nameEN: "Ten of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/4/42/Pents10.jpg", desc: "မိသားစုစည်းစိမ် ကြွယ်ဝခြင်း၊ ရေရှည်တည်မြဲတဲ့ စီးပွားရေး အောင်မြင်မှုတွေကို ရရှိပါမယ်။" },
-            { nameMM: "ဒင်္ဂါး စာရေး (Page of Pentacles)", nameEN: "Page of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Pents01.jpg", desc: "လေ့လာသင်ယူလိုစိတ်နဲ့ လက်တွေ့ကျတဲ့ ရည်မှန်းချက်အသစ်တွေ စတင်ဖို့ ကောင်းပါတယ်။" },
-            { nameMM: "ဒင်္ဂါး သူရဲကောင်း (Knight of Pentacles)", nameEN: "Knight of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/d/d8/Pents01.jpg", desc: "ဇွဲလုံ့လကြီးမားမှု၊ တာဝန်ယူမှုအပြည့်နဲ့ တည်ငြိမ်စွာ ရှေ့ဆက်နေတဲ့ သဘောကိုဆောင်ပါတယ်။" },
-            { nameMM: "ဒင်္ဂါး မဟေသီ (Queen of Pentacles)", nameEN: "Queen of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/3/36/Pents01.jpg", desc: "အိမ်ထောင်ရေး၊ စီးပွားရေးနဲ့ ငွေကြေးစီမံခန့်ခွဲမှုတွေမှာ ထူးချွန်ကျွမ်းကျင်မှု ရှိပါတယ်။" },
-            { nameMM: "ဒင်္ဂါး ဘုရင် (King of Pentacles)", nameEN: "King of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/1/1c/Pents01.jpg", desc: "စီးပွားရေးလုပ်ငန်းတွေမှာ ကြီးမားတဲ့ အောင်မြင်မှုနဲ့ ကြွယ်ဝချမ်းသာမှုကို ပိုင်ဆိုင်မယ့်သူပါ။" },
-
-            // Swords Suit (၁၄ ချပ်)
             { nameMM: "ဓားများ၏ အစ (Ace of Swords)", nameEN: "Ace of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/1/1a/Swords01.jpg", desc: "စိတ်ကူးဉာဏ် ကြည်လင်လာခြင်း၊ အမှန်တရားကို ဖော်ထုတ်နိုင်ခြင်းနဲ့ အောင်မြင်မှုအစပါ။" },
-            { nameMM: "ဓား နှစ်လက် (Two of Swords)", nameEN: "Two of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/9/9e/Swords02.jpg", desc: "အရေးကြီးတဲ့ ဆုံးဖြတ်ချက်တစ်ခုကို ချမှတ်ဖို့ ဝေခွဲမရဖြစ်နေတဲ့ အနေအထားပါ။" },
-            { nameMM: "ဓား သုံးလက် (Three of Swords)", nameEN: "Three of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/0/02/Swords03.jpg", desc: "စိတ်ထိခိုက်စရာ အခြေအနေ၊ စိတ်ပျက်စရာ သို့မဟုတ် နားလည်မှုလွဲမှားခြင်းနဲ့ ကြုံရနိုင်ပါတယ်။" },
-            { nameMM: "ဓား လေးလက် (Four of Swords)", nameEN: "Four of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Swords04.jpg", desc: "ခေတ္တအနားယူခြင်း၊ စိတ်နဲ့ကိုယ်ကို အနားပေးပြီး အားအသစ်ပြန်ဖြည့်ရမယ့် အချိန်ပါ။" },
-            { nameMM: "ဓား ငါးလက် (Five of Swords)", nameEN: "Five of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/2/2a/Swords05.jpg", desc: "ပဋိပက္ခနဲ့ အငြင်းပွားမှုတွေ ရှောင်ရှားသင့်ပြီး ရှုံးနိမ့်မှုကနေ သင်ခန်းစာယူရပါမယ်။" },
-            { nameMM: "ဓား ခြောက်လက် (Six of Swords)", nameEN: "Six of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/2/21/Swords06.jpg", desc: "အခက်အခဲတွေနောက်ကို စွန့်ခွာပြီး တည်ငြိမ်ရာ အရပ်ဆီသို့ ကူးပြောင်းသွားခြင်းပါ။" },
-            { nameMM: "ဓား ခုနစ်လက် (Seven of Swords)", nameEN: "Seven of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/3/34/Swords07.jpg", desc: "သတိထားဆင်ခြင်ရမယ့် အနေအထားနဲ့ လျှို့ဝှက်ချက်တွေ ရှိနေနိုင်တဲ့ ကာလပါ။" },
-            { nameMM: "ဓား ရှစ်လက် (Eight of Swords)", nameEN: "Eight of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/a/a7/Swords08.jpg", desc: "မိမိကိုယ်ကို ကန့်သတ်ထားသလို ခံစားရတာမျိုးနဲ့ အကျပ်အတည်းလေးတွေ ရှိနေနိုင်ပါတယ်။" },
-            { nameMM: "ဓား ကိုးလက် (Nine of Swords)", nameEN: "Nine of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/2/2f/Swords09.jpg", desc: "စိုးရိမ်ပူပန်မှုလွန်ကဲခြင်းနဲ့ အိပ်မပျော်တာမျိုးတွေ ကြုံရနိုင်ပေမယ့် အပြင်မှာ အဲ့လောက်မဆိုးပါဘူး။" },
-            { nameMM: "ဓား ၁၀ လက် (Ten of Swords)", nameEN: "Ten of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Swords10.jpg", desc: "အခက်အခဲတွေ အဆိုးဆုံးအခြေအနေ ပြီးဆုံးသွားပြီဖြစ်လို့ လွတ်မြောက်မှုအစ ရောက်ပါပြီ။" },
-            { nameMM: "ဓား စာရေး (Page of Swords)", nameEN: "Page of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Swords01.jpg", desc: "စူးစမ်းလိုစိတ်ပြင်းထန်ခြင်း၊ သတင်းအချက်အလက် အသစ်တွေကို ရှာဖွေတွေ့ရှိခြင်း ရှိပါမယ်။" },
-            { nameMM: "ဓား သူရဲကောင်း (Knight of Swords)", nameEN: "Knight of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/b/b0/Swords01.jpg", desc: "ပြတ်သားမြန်ဆန်တဲ့ လုပ်ဆောင်ချက်တွေနဲ့ ရည်မှန်းချက်ဆီ အဟုန်ပြင်းပြင်း သွားမယ့်အချိန်ပါ။" },
-            { nameMM: "ဓား မဟေသီ (Queen of Swords)", nameEN: "Queen of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/3/33/Swords01.jpg", desc: "ဉာဏ်ပညာထက်မြက်ခြင်း၊ တရားမျှတမှုကို ဦးစားပေးခြင်းနဲ့ ရှင်းလင်းပြတ်သားမှု ရှိပါတယ်။" },
-            { nameMM: "ဓား ဘုရင် (King of Swords)", nameEN: "King of Swords", img: "https://upload.wikimedia.org/wikipedia/commons/3/34/Swords01.jpg", desc: "အသိဉာဏ်ပညာကြီးမားပြီး မျှတတဲ့ ဆုံးဖြတ်ချက်တွေကို ခိုင်မာစွာ ချမှတ်နိုင်စွမ်း ရှိပါတယ်။" },
-
-            // Wands Suit (၁၄ ချပ်)
-            { nameMM: "တုတ်တံများ၏ အစ (Ace of Wands)", nameEN: "Ace of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg", desc: "လုပ်ငန်းသစ် စတင်ခြင်း၊ စိတ်အားထက်သန်မှုနဲ့ စွမ်းအင်အသစ်တွေ အပြည့်အဝ ရရှိမယ့်အချိန်ပါ။" },
-            { nameMM: "တုတ်တံ နှစ်ချောင်း (Two of Wands)", nameEN: "Two of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Wands02.jpg", desc: "အနာဂတ်အတွက် ရည်မှန်းချက်ကြီးကြီးနဲ့ အစီအစဉ်အသစ်တွေ ချမှတ်နေတဲ့ ကာလပါ။" },
-            { nameMM: "တုတ်တံ သုံးချောင်း (Three of Wands)", nameEN: "Three of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Wands03.jpg", desc: "ကြိုးစားအားထုတ်မှုတွေရဲ့ အောင်မြင်မှုကို စတင်စောင့်မျှော်ရတော့မယ့် အနေအထားပါ။" },
-            { nameMM: "တုတ်တံ လေးချောင်း (Four of Wands)", nameEN: "Four of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Wands04.jpg", desc: "အိမ်ထောင်ရေး၊ ပွဲလမ်းသဘင်နဲ့ ပျော်ရွှင်စရာ အခမ်းအနားတွေမှာ အတူစုဝေးရမယ့် အချိန်ပါ။" },
-            { nameMM: "တုတ်တံ ငါးချောင်း (Five of Wands)", nameEN: "Five of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Wands05.jpg", desc: "ပြိုင်ဆိုင်မှုတွေနဲ့ သဘောထားကွဲလွဲမှုလေးတွေ ရှိနိုင်ပေမယ့် ကျော်ဖြတ်နိုင်ပါတယ်။" },
-            { nameMM: "တုတ်တံ ခြောက်ချောင်း (Six of Wands)", nameEN: "Six of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/b/b6/Wands06.jpg", desc: "အောင်မြင်မှုရရှိခြင်း၊ လူအများရဲ့ အသိအမှတ်ပြုမှုကို ခံရခြင်းနဲ့ ဂုဏ်ယူစရာတွေ ပိုင်ဆိုင်ရပါမယ်။" },
-            { nameMM: "တုတ်တံ ခုနစ်ချောင်း (Seven of Wands)", nameEN: "Seven of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/e/e4/Wands07.jpg", desc: "မိမိရဲ့ ရပ်တည်ချက်နဲ့ အကျိုးစီးပွားကို ကြံ့ကြံ့ခံ ရင်ဆိုင်ကာကွယ်ရမယ့် အချိန်ပါ။" },
-            { nameMM: "တုတ်တံ ရှစ်ချောင်း (Eight of Wands)", nameEN: "Eight of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Wands08.jpg", desc: "ကိစ္စရပ်တွေ အလွန်လျင်မြန်စွာ ဖြစ်ပေါ်တိုးတက်ခြင်းနဲ့ ခရီးသွားလာရမှုတွေ ရှိလာပါမယ်။" },
-            { nameMM: "တုတ်တံ ကိုးချောင်း (Nine of Wands)", nameEN: "Nine of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/Wands09.jpg", desc: "နောက်ဆုံးအဆင့်ကို ရောက်တော့မှာဖြစ်လို့ အနည်းငယ် ပင်ပန်းပေမယ့် ဆက်ကြိုးစားပါ။" },
-            { nameMM: "တုတ်တံ ၁၀ ချောင်း (Ten of Wands)", nameEN: "Ten of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/0/0b/Wands10.jpg", desc: "တာဝန်ဝတ္တရားတွေ ပိနေတာမျိုးဖြစ်လို့ မလိုအပ်တဲ့ ဝန်ထုပ်ဝန်ပိုးတွေကို လျှော့ချပါ။" },
-            { nameMM: "တုတ်တံ စာရေး (Page of Wands)", nameEN: "Page of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/6/6a/Wands01.jpg", desc: "စွန့်စားလိုစိတ်၊ စိတ်အားထက်သန်မှုနဲ့ အိုင်เดียအသစ်တွေ ထွက်ပေါ်လာမယ့် ကာလပါ။" },
-            { nameMM: "တုတ်တံ သူရဲကောင်း (Knight of Wands)", nameEN: "Knight of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/1/16/Wands01.jpg", desc: "စိတ်အားထက်သန်မှု အပြည့်နဲ့ အလျင်အမြန် ခရီးထွက်တာ သို့မဟုတ် လုပ်ဆောင်တာတွေ ရှိပါမယ်။" },
-            { nameMM: "တုတ်တံ မဟေသီ (Queen of Wands)", nameEN: "Queen of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/c/ce/Wands01.jpg", desc: "ယုံကြည်မှုအပြည့်ရှိခြင်း၊ ဖော်ရွေခြင်းနဲ့ ဆွဲဆောင်မှုရှိတဲ့ စွမ်းအင်တွေကို ပိုင်ဆိုင်ထားပါတယ်။" },
-            { nameMM: "တုတ်တံ ဘုရင် (King of Wands)", nameEN: "King of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/0/0d/Wands01.jpg", desc: "လုပ်ငန်းသစ်တွေကို အောင်မြင်စွာ ဖန်တီးနိုင်စွမ်းနဲ့ ခေါင်းဆောင်မှုအပြည့် ရှိပါတယ်။" }
+            { nameMM: "တုတ်တံများ၏ အစ (Ace of Wands)", nameEN: "Ace of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg", desc: "လုပ်ငန်းသစ် စတင်ခြင်း၊ စိတ်အားထက်သန်မှုနဲ့ စွမ်းအင်အသစ်တွေ အပြည့်အဝ ရရှိမယ့်အချိန်ပါ။" }
         ];
 
         const translations = {
@@ -857,33 +780,21 @@
                 clearInterval(shuffleInterval);
                 document.getElementById('deckArea').style.display = 'none';
                 document.getElementById('selectionArea').style.display = 'block';
-                initFanSpreadDeck();
+                initModernGridDeck();
             }, 4000);
         }
 
-        function initFanSpreadDeck() {
+        // 🌟 New Modern Grid Card Picking Initialization
+        function initModernGridDeck() {
             const spread = document.getElementById('spreadDeck');
             spread.innerHTML = '';
             chosenCards = [];
             updateSlotsUI();
 
-            let totalCards = 14;
-            let angleRange = 130;
-            let startAngle = -65;
-
-            for(let i=0; i<totalCards; i++) {
+            let totalCardsInGrid = 12; // ရွေးချယ်ရန် ကဒ် ၁၂ ချပ်ပြသမည်
+            for(let i=0; i<totalCardsInGrid; i++) {
                 let cardItem = document.createElement('div');
                 cardItem.className = 'spread-card-item';
-                
-                // Staggered appearance delay for ultra-smooth fluid feel
-                cardItem.style.animationDelay = `${i * 0.03}s`;
-
-                let angle = startAngle + (i * (angleRange / (totalCards - 1)));
-                let xOffset = (i - totalCards / 2) * 16;
-                
-                cardItem.style.transform = `translateX(${xOffset}px) rotate(${angle}deg)`;
-                cardItem.style.transformOrigin = "bottom center";
-                
                 cardItem.onclick = () => pickCard(cardItem);
                 spread.appendChild(cardItem);
             }
@@ -921,7 +832,8 @@
             }
         }
 
-        function showFinalResult() {
+        // 🌟 ChatGPT API Integration (ကဒ်နာမည်များ မပါဘဲ လူစကားပြောဟန်ဖြင့် အဟောထုတ်ပေးခြင်း)
+        async function showFinalResult() {
             document.getElementById('selectionArea').style.display = 'none';
             const resSection = document.getElementById('resultSection');
             const container = document.getElementById('detailedCardsContainer');
@@ -949,38 +861,36 @@
                 container.appendChild(box);
             });
 
-            // ရွေးလိုက်တဲ့ ခေါင်းစဉ်အသေး (Sub-option) အလိုက် အမျိုးမျိုးကွဲပြားပြီး သဘာဝကျသော အဟောများ
-            let conversationalSummary = "";
-
-            if (selectedSubOption === 'e_2') {
-                const variants = [
-                    `စာမေးပွဲနဲ့ ပတ်သက်ပြီး ရင်ခုန်နေတယ်မလား... ဒီကျလာတဲ့ ကဒ်စွမ်းအင်တွေအရ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ကိုယ် တိတ်တဆိတ် ကြိုးစားထားတာတွေအတွက် တကယ်ကို ကျေနပ်စရာကောင်းတဲ့ အောင်မြင်မှု အသီးအပွင့်တွေကို မုချ ခံစားရမှာပါနော်။ စိတ်ကို တည်ငြိမ်စွာထားပြီး ယုံကြည်မှုအပြည့်နဲ့ ဖြေဆိုလိုက်ပါ!`,
-                    `စာမေးပွဲအောင်နိုင်မလားဆိုတော့... ကဒ်တွေက (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ညွှန်ပြနေတာက ကိုယ့်ရဲ့ အجهုစိုက်ထုတ်မှုတွေက အချည်းနှီး မဖြစ်ရပါဘူး။ အခက်အခဲတွေကို ကျော်ဖြတ်ပြီး ဂုဏ်ယူစရာ ရလဒ်ကောင်းကို ပိုင်ဆိုင်ရမယ့် ကာလရောက်နေပါပြီ။`
-                ];
-                conversationalSummary = variants[Math.floor(Math.random() * variants.length)];
-            } else if (selectedSubOption === 'e_1') {
-                const variants = [
-                    `ပညာရေးလမ်းကြောင်းမှာ လက်ရှိကြုံနေရတဲ့ အခြေအနေကို ကြည့်ရတာ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ကိုယ်က အကောင်းဆုံး ကြိုးစားနေတာ တွေ့ရတယ်။ ရှေ့ဆက်ရမယ့် အဆင့်တွေမှာလည်း အသိဉာဏ်ပညာနဲ့ အောင်မြင်မှုတွေ ဆက်တိုက် ဝင်လာပါလိမ့်မယ်နော်။`,
-                    `လက်ရှိပညာရေး စွမ်းအင်အရ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ကိုယ့်ရဲ့ ရည်မှန်းချက်ပန်းတိုင်ဆီ တဖြည်းဖြည်းနဲ့ အာမခံချက်ရှိရှိ ရောက်ရှိနေပါပြီ။ စိတ်ဓာတ်မကျဘဲ ဆက်တိုးလှမ်းလိုက်ပါ။`
-                ];
-                conversationalSummary = variants[Math.floor(Math.random() * variants.length)];
-            } else if (selectedSubOption.includes('rs') || selectedSubOption === 'marriage') {
-                const variants = [
-                    `အချစ်ရေးနဲ့ ပတ်သက်ပြီး ဒီကဒ်တွေက (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) နှစ်ယောက်ကြားက နားလည်မှုတွေ ပိုခိုင်မာလာမယ့်အကြောင်း ပြောပြနေတယ်။ အတိတ်က ဝေခွဲမရတာတွေ ပြေလည်ပြီး ချိုမြိန်တဲ့ အပြောင်းအလဲတွေ ရှိလာပါမယ်။`,
-                    `လက်ရှိအချစ်ရေး စွမ်းအင်ကတော့ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) တစ်ယောက်နဲ့တစ်ယောက် ပိုပြီး တန်ဖိုးထား နားလည်ပေးနိုင်မယ့် အခွင့်အလမ်းကောင်းတွေ ဖန်တီးပေးနေပါတယ်။ စိတ်ချလက်ချ ရှေ့ဆက်လိုက်ပါနော်။`
-                ];
-                conversationalSummary = variants[Math.floor(Math.random() * variants.length)];
-            } else {
-                const variants = [
-                    `ဟော... ဒီကဒ်သုံးချပ် ပေါင်းစပ်လာတဲ့ ပုံစံအရဆိုရင်လေ... (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) အရင်တုန်းက ကိုယ်ဖြတ်သန်းခဲ့ရတဲ့ အဖုအထစ်တွေ တဖြည်းဖြည်း ပြေလည်လာပါပြီ။ ရှေ့ဆက်ရမယ့်အနာဂတ်မှာ ပိုပြီး အဆင်ပြေချောမွေ့တာတွေနဲ့ ရင်ဆိုင်ရပါမယ်။`,
-                    `ဒီကဒ်တွေရဲ့ အဓိပ္ပာယ်ကတော့ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) သင့်ရဲ့ မေးခွန်းအတွက် အလွန်ကောင်းမွန်တဲ့ လမ်းညွှန်ချက်ကို ပေးနေပါတယ်။ ကိုယ့်ကံကြမ္မာအပေါ် ယုံကြည်မှုအပြည့်နဲ့ ရှေ့ဆက်လိုက်ပါ။`
-                ];
-                conversationalSummary = variants[Math.floor(Math.random() * variants.length)];
-            }
-
-            summaryText.innerHTML = conversationalSummary;
+            summaryText.innerHTML = currentLang === 'mm' ? "🔮 ဆရာမ လက်ကွက်ဖတ်ပြီး အဟောထုတ်ပေးနေပါပြီ ခဏစောင့်ပါ..." : "🔮 Reading in progress, please wait...";
             resSection.style.display = 'block';
             resSection.scrollIntoView({ behavior: 'smooth' });
+
+            // OpenAI Prompt (ကဒ်နာမည်များ ထည့်မဖော်ပြဘဲ စွမ်းအင်ပေါ်မူတည်၍ လူပြောစကားသံစစ်စစ်ဖြင့် ဟောရန် ညွှန်ကြားထားသည်)
+            let promptText = `သင်သည် မြန်မာ့ရိုးရာနှင့် တာရော့တ်ဗေဒင်ပညာကို ကျွမ်းကျင်သော နားဝင်ချိုပြီး စိတ်ဓာတ်ခွန်အားပေးတတ်သည့် နာမည်ကြီး ဆရာမတစ်ဦး ဖြစ်ပါသည်။ အသုံးပြုသူက '${selectedCategoryType}' ကဏ္ဍအတွက် တာရော့တ်ကဒ် ၃ ချပ် ရွေးချယ်ထားပါသည်။ (ထိုကဒ်များ၏ သဘောသဘာဝစွမ်းအင်မှာ အတိတ်, ပစ္စုပ္ပန်, အနာဂတ် ကို ကိုယ်စားပြုပါသည်)။ တကယ့် လူဗေဒင်ဆရာမတစ်ဦးက ရင်ဘတ်ချင်းနီးနီး ဖော်ရွေစွာ၊ နားလည်လွယ်စွာဖြင့် လူပြောစကားသံစစ်စစ်ဖြင့် ဟောပြောနေသကဲ့သို့ အတိတ်၊ ပစ္စုပ္ပန်၊ အနာဂတ်ကို ခြုံငုံပြီး အဟောအကျဉ်းကို မြန်မာလို အတိုချုံး ရေးပေးပါ။ အရေးကြီးသည်မှာ: အဟောအကျဉ်းစာသားအတွင်းသို့ တာရော့တ်ကဒ်နာမည်များ လုံးဝ (လုံးဝ) မထည့်ရပါ။ 'AI' သို့မဟုတ် 'စက်ပစ္စည်း' ဟူ၍လည်း လုံးဝမသုံးရပါ။`;
+
+            try {
+                let response = await fetch('https://api.openai.com/v1/chat/completions', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': 'Bearer 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'
+                    },
+                    body: JSON.stringify({
+                        model: "gpt-4o-mini",
+                        messages: [{ role: "user", content: promptText }],
+                        temperature: 0.8
+                    })
+                });
+
+                let data = await response.json();
+                if (data.choices && data.choices.length > 0) {
+                    summaryText.innerHTML = data.choices[0].message.content.replace(/\n/g, '<br>');
+                } else {
+                    summaryText.innerHTML = currentLang === 'mm' ? "စွမ်းအင်လိုင်း မငြိမ်သေးပါ။ ကျေးဇူးပြု၍ ထပ်မံကြိုးစားပါ။" : "Network error. Please try again.";
+                }
+            } catch (error) {
+                summaryText.innerHTML = currentLang === 'mm' ? "ချိတ်ဆက်မှု အမှားအယွင်း ရှိနေပါသည်။" : "Connection error occurred.";
+            }
         }
 
         function resetApp() {
