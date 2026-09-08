@@ -154,7 +154,7 @@
             border: 1.5px solid #d4af37;
             border-radius: 12px;
             box-shadow: 0 8px 20px rgba(0,0,0,0.6);
-            transition: transform 0.5s ease;
+            transition: transform 0.4s cubic-bezier(0.25, 1, 0.5, 1);
         }
 
         .action-lux-btn {
@@ -199,14 +199,16 @@
             font-weight: bold;
         }
 
+        /* Smooth & Fluid Card Spread Area */
         .cards-spread-deck {
             position: relative;
             width: 100%;
-            height: 150px;
+            height: 155px;
             margin: 20px 0;
             display: flex;
             justify-content: center;
             align-items: flex-end;
+            perspective: 1000px;
         }
         .spread-card-item {
             position: absolute;
@@ -218,19 +220,33 @@
             border: 1.5px solid #d4af37;
             border-radius: 8px;
             cursor: pointer;
-            transition: transform 0.3s ease, box-shadow 0.3s ease;
             box-shadow: 0 4px 15px rgba(0,0,0,0.5);
             transform-origin: bottom center;
+            will-change: transform, opacity;
+            transition: transform 0.35s cubic-bezier(0.34, 1.56, 0.64, 1), box-shadow 0.3s ease, opacity 0.3s ease;
+            animation: cardAppear 0.5s cubic-bezier(0.25, 1, 0.5, 1) forwards;
+            opacity: 0;
         }
+
+        @keyframes cardAppear {
+            0% {
+                transform: translateY(40px) scale(0.5) rotate(0deg);
+                opacity: 0;
+            }
+            100% {
+                opacity: 1;
+            }
+        }
+
         .spread-card-item:hover { 
-            transform: translateY(-20px) scale(1.15) !important; 
-            box-shadow: 0 10px 25px rgba(212, 175, 55, 0.8);
+            transform: translateY(-22px) scale(1.15) !important; 
+            box-shadow: 0 12px 28px rgba(212, 175, 55, 0.85);
             z-index: 100;
         }
         .spread-card-item.chosen {
-            opacity: 0.2;
+            opacity: 0.25;
             pointer-events: none;
-            transform: translateY(-30px) scale(0.9) !important;
+            transform: translateY(-35px) scale(0.85) !important;
         }
 
         .result-section {
@@ -528,13 +544,13 @@
 
             // Cups Suit (၁၄ ချပ်)
             { nameMM: "ဖလားများ၏ အစ (Ace of Cups)", nameEN: "Ace of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/3/36/Cups01.jpg", desc: "ရင်ထဲမှာ နွေးထွေးတဲ့ ခံစားချက်တွေနဲ့အတူ မေတ္တာရေးရာမှာ ပျော်ရွှင်စရာတွေ ပိုင်ဆိုင်ရပါမယ်။" },
-            { nameMM: "ဖလား နှစ်လုံး (Two of Cups)", nameEN: "Two of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/Cups02.jpg", desc: "နှစ်ဦးူသဘောတူညီမှု၊ အပြန်အလှန် ချစ်ခင်လေးစားမှုနဲ့ ဖက်စပ်ဆက်ဆံရေးကောင်းတွေ ပေါ်လာပါမယ်။" },
+            { nameMM: "ဖလား နှစ်လုံး (Two of Cups)", nameEN: "Two of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/Cups02.jpg", desc: "နှစ်ဦးသဘောတူညီမှု၊ အပြန်အလှန် ချစ်ခင်လေးစားမှုနဲ့ ဖက်စပ်ဆက်ဆံရေးကောင်းတွေ ပေါ်လာပါမယ်။" },
             { nameMM: "ဖလား သုံးလုံး (Three of Cups)", nameEN: "Three of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/7/7a/Cups03.jpg", desc: "တွေ့ဆုံပျော်ရွှင်ရခြင်း၊ အောင်ပွဲခံခြင်းနဲ့ မိတ်ဆွေအပေါင်းအသင်းတွေနဲ့ ပျော်ရွှင်ရမယ့်အချိန်ပါ။" },
             { nameMM: "ဖလား လေးလုံး (Four of Cups)", nameEN: "Four of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/3/35/Cups04.jpg", desc: "လက်ရှိအခြေအနေအပေါ် ငြီးငွေ့တာမျိုးဖြစ်တတ်ပြီး အခွင့်အလမ်းသစ်တွေကို သတိထားမိဖို့လိုပါတယ်။" },
             { nameMM: "ဖလား ငါးလုံး (Five of Cups)", nameEN: "Five of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/Cups05.jpg", desc: "ဆုံးရှုံးမှုအပေါ်မှာပဲ အာရုံမစိုက်ဘဲ ကျန်ရှိနေသေးတဲ့ အကောင်းဘက်ကို ပြန်ကြည့်ဖို့ လိုပါတယ်။" },
             { nameMM: "ဖလား ခြောက်လုံး (Six of Cups)", nameEN: "Six of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/Cups06.jpg", desc: "အတိတ်က မိတ်ဆွေဟောင်းတွေ၊ ရင်းနှီးတဲ့ အမှတ်တရဟောင်းတွေ ပြန်လည်ပေါ်ပေါက်လာပါမယ်။" },
             { nameMM: "ဖလား ခုနစ်လုံး (Seven of Cups)", nameEN: "Seven of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/a/ae/Cups07.jpg", desc: "ရွေးချယ်စရာတွေ များပြားနေပြီး အာရုံမစိုက်နိုင်ဖြစ်နေတာမျိုးကို သတိပြုရပါမယ်။" },
-            { nameMM: "ဖလား ရှစ်လုံး (Eight of Cups)", nameEN: "Eight of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/6/60/Cups08.jpg", desc: "မကျေနပ်စရာ အခြေအနေတစ်ခုကို စွန့်ခွာပြီး ပိုမိုကောင်းမွန်တဲ့ လမ်းကြောင်းသီကို ထွက်ခွာလာခြင်းပါ။" },
+            { nameMM: "ဖလား ရှစ်လုံး (Eight of Cups)", nameEN: "Eight of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/6/60/Cups08.jpg", desc: "မကျေနပ်စရာ အခြေအနေတစ်ခုကို စွန့်ခွာပြီး ပိုမိုကောင်းမွန်တဲ့ လမ်းကြောင်းဆီကို ထွက်ခွာလာခြင်းပါ။" },
             { nameMM: "ဖလား ကိုးလုံး (Nine of Cups)", nameEN: "Nine of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/2/24/Cups09.jpg", desc: "ဆန္ဒတွေပြည့်ဝခြင်း၊ စိတ်ကျေနပ်မှုနဲ့ ပျော်ရွှင်စရာ အခိုက်အတန့်တွေကို ပိုင်ဆိုင်ရပါမယ်။" },
             { nameMM: "ဖလား ၁၀ လုံး (Ten of Cups)", nameEN: "Ten of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/8/84/Cups10.jpg", desc: "မိသားစုဘဝ သာယာခြင်း၊ စစ်မှန်တဲ့ မေတ္တာနဲ့ ရေရှည်တည်မြဲတဲ့ ပျော်ရွှင်မှုကို ရရှိပါမယ်။" },
             { nameMM: "ဖလား စာရေး (Page of Cups)", nameEN: "Page of Cups", img: "https://upload.wikimedia.org/wikipedia/commons/a/ad/Cups01.jpg", desc: "ရင်ခုန်စရာ သတင်းစကားကောင်းတွေနဲ့ ဖန်တီးနိုင်စွမ်းအသစ်တွေ ဝင်ရောက်လာပါမယ်။" },
@@ -552,7 +568,7 @@
             { nameMM: "ဒင်္ဂါး ခုနစ်ပြား (Seven of Pentacles)", nameEN: "Seven of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/6/6b/Pents07.jpg", desc: "စိုက်ထုတ်ထားတဲ့ ကြိုးစားအားထုတ်မှုတွေရဲ့ ရလဒ်ကို စိတ်ရှည်ရှည်နဲ့ စောင့်ဆိုင်းရမယ့်အချိန်ပါ။" },
             { nameMM: "ဒင်္ဂါး ရှစ်ပြား (Eight of Pentacles)", nameEN: "Eight of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/d/d4/Pents08.jpg", desc: "ကျွမ်းကျင်မှုအသစ်တွေကို လေ့လာခြင်းနဲ့ လုပ်ငန်းခွင်မှာ စိတ်စိုက်လုပ်ကိုင်ခြင်းတို့ အောင်မြင်ပါမယ်။" },
             { nameMM: "ဒင်္ဂါး ကိုးပြား (Nine of Pentacles)", nameEN: "Nine of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/f/f0/Pents09.jpg", desc: "ကိုယ်ပိုင်အရည်အချင်းနဲ့ ကြိုးစားမှုကြောင့် သက်တောင့်သက်သာရှိပြီး ပြည့်စုံတဲ့ ဘဝကို ပိုင်ဆိုင်ရပါမယ်။" },
-            { nameMM: "ဒင်္ဂါး ၁၀ ပြား (Ten of Pentacles)", nameEN: "Ten of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/4/42/Pents10.jpg", desc: "မိသားစုစည်းစိမ် ကြွယ်ဝခြင်း၊ ရေရှည်တည်မြိမ်တဲ့ စီးပွားရေး အောင်မြင်မှုတွေကို ရရှိပါမယ်။" },
+            { nameMM: "ဒင်္ဂါး ၁၀ ပြား (Ten of Pentacles)", nameEN: "Ten of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/4/42/Pents10.jpg", desc: "မိသားစုစည်းစိမ် ကြွယ်ဝခြင်း၊ ရေရှည်တည်မြဲတဲ့ စီးပွားရေး အောင်မြင်မှုတွေကို ရရှိပါမယ်။" },
             { nameMM: "ဒင်္ဂါး စာရေး (Page of Pentacles)", nameEN: "Page of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/e/ec/Pents01.jpg", desc: "လေ့လာသင်ယူလိုစိတ်နဲ့ လက်တွေ့ကျတဲ့ ရည်မှန်းချက်အသစ်တွေ စတင်ဖို့ ကောင်းပါတယ်။" },
             { nameMM: "ဒင်္ဂါး သူရဲကောင်း (Knight of Pentacles)", nameEN: "Knight of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/d/d8/Pents01.jpg", desc: "ဇွဲလုံ့လကြီးမားမှု၊ တာဝန်ယူမှုအပြည့်နဲ့ တည်ငြိမ်စွာ ရှေ့ဆက်နေတဲ့ သဘောကိုဆောင်ပါတယ်။" },
             { nameMM: "ဒင်္ဂါး မဟေသီ (Queen of Pentacles)", nameEN: "Queen of Pentacles", img: "https://upload.wikimedia.org/wikipedia/commons/3/36/Pents01.jpg", desc: "အိမ်ထောင်ရေး၊ စီးပွားရေးနဲ့ ငွေကြေးစီမံခန့်ခွဲမှုတွေမှာ ထူးချွန်ကျွမ်းကျင်မှု ရှိပါတယ်။" },
@@ -859,6 +875,9 @@
                 let cardItem = document.createElement('div');
                 cardItem.className = 'spread-card-item';
                 
+                // Staggered appearance delay for ultra-smooth fluid feel
+                cardItem.style.animationDelay = `${i * 0.03}s`;
+
                 let angle = startAngle + (i * (angleRange / (totalCards - 1)));
                 let xOffset = (i - totalCards / 2) * 16;
                 
@@ -930,29 +949,33 @@
                 container.appendChild(box);
             });
 
-            // ရွေးလိုက်တဲ့ ခေါင်းစဉ်အသေး (Sub-option) အလိုက် တကယ့်လူပြောစကားဆန်ဆန် သဘာဝကျတဲ့ အဟောများ
+            // ရွေးလိုက်တဲ့ ခေါင်းစဉ်အသေး (Sub-option) အလိုက် အမျိုးမျိုးကွဲပြားပြီး သဘာဝကျသော အဟောများ
             let conversationalSummary = "";
 
             if (selectedSubOption === 'e_2') {
-                // ပညာရေး - စာမေးပွဲအောင်နိုင်လား
-                conversationalSummary = currentLang === 'mm'
-                    ? `စာမေးပွဲနဲ့ ပတ်သက်ပြီး စိုးရိမ်နေတာလား... ဒီကျလာတဲ့ ကဒ်စွမ်းအင်တွေအရ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ကိုယ် တိတ်တဆိတ် ကြိုးစားထားတာတွေ၊ အပင်ပန်းခံ ဖတ်မှတ်ထားတာတွေအတွက် တကယ်ကို ကျေနပ်စရာကောင်းတဲ့ အောင်မြင်မှု အသီးအပွင့်တွေကို မုချ ခံစားရမှာပါနော်။ ယုံကြည်မှုအပြည့်နဲ့သာ ဖြေဆိုလိုက်ပါ၊ စိတ်ချမ်းသာရမယ့် ရလဒ်ကောင်း သေချာပေါက် ပိုင်ဆိုင်ရပါလိမ့်မယ်။`
-                    : `Regarding your exams... the cards (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}) show that all your hard work and late-night studying will definitely pay off. Go in with confidence and expect great results!`;
+                const variants = [
+                    `စာမေးပွဲနဲ့ ပတ်သက်ပြီး ရင်ခုန်နေတယ်မလား... ဒီကျလာတဲ့ ကဒ်စွမ်းအင်တွေအရ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ကိုယ် တိတ်တဆိတ် ကြိုးစားထားတာတွေအတွက် တကယ်ကို ကျေနပ်စရာကောင်းတဲ့ အောင်မြင်မှု အသီးအပွင့်တွေကို မုချ ခံစားရမှာပါနော်။ စိတ်ကို တည်ငြိမ်စွာထားပြီး ယုံကြည်မှုအပြည့်နဲ့ ဖြေဆိုလိုက်ပါ!`,
+                    `စာမေးပွဲအောင်နိုင်မလားဆိုတော့... ကဒ်တွေက (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ညွှန်ပြနေတာက ကိုယ့်ရဲ့ အجهုစိုက်ထုတ်မှုတွေက အချည်းနှီး မဖြစ်ရပါဘူး။ အခက်အခဲတွေကို ကျော်ဖြတ်ပြီး ဂုဏ်ယူစရာ ရလဒ်ကောင်းကို ပိုင်ဆိုင်ရမယ့် ကာလရောက်နေပါပြီ။`
+                ];
+                conversationalSummary = variants[Math.floor(Math.random() * variants.length)];
             } else if (selectedSubOption === 'e_1') {
-                // ပညာရေး - လက်ရှိပညာရေး
-                conversationalSummary = currentLang === 'mm'
-                    ? `ပညာရေးနဲ့ ပတ်သက်ပြီး လက်ရှိအခြေအနေကို ကြည့်ရတာ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ကိုယ်က စိတ်ရောကိုယ်ပါ အာရုံစိုက်ပြီး အကောင်းဆုံး ကြိုးစားနေတာ တွေ့ရတယ်။ အရင်က အခက်အခဲလေးတွေကို ကျော်ဖြတ်နိုင်ခဲ့ပြီဖြစ်လို့ ရှေ့ဆက်ရမယ့် လမ်းကြောင်းမှာလည်း တည်ငြိမ်မှုတွေနဲ့ အောင်မြင်မှုတွေ ဆက်တိုက် ရောက်လာတော့မှာပါနော်။`
-                    : `Looking at your current academic path through these cards (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}), you've been putting in sincere effort. Having overcome past hurdles, steady progress and success are heading your way.`;
-            } else if (selectedSubOption === 'rs_active' || selectedSubOption === 'rs_1' || selectedSubOption === 'rs_2' || selectedSubOption === 'rs_3') {
-                // အချစ်ရေး - လက်ရှိချစ်သူ
-                conversationalSummary = currentLang === 'mm'
-                    ? `အချစ်ရေးနဲ့ ပတ်သက်လို့ ဒီကဒ်တွေက (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ဘာကိုပြနေလဲဆိုတော့... နှစ်ယောက်ကြားမှာ ရှိတဲ့ နားလည်မှုတွေက တဖြည်းဖြည်းနဲ့ ပိုခိုင်မာလာနေတယ်။ အတိတ်က သံသယတွေ ဒါမှမဟုတ် အဖုအထစ်လေးတွေ ရှိခဲ့ရင်တောင် အခုဆိုရင် အဖြေပေါ်လာပြီး ပိုတူတူရှေ့ဆက်လို့ကောင်းမယ့် အချိန်ရောက်လာပါပြီနော်။`
-                    : `Regarding your relationship, these cards (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}) indicate that mutual understanding is growing stronger. Any past bumps are clearing up, making way for a harmonious connection.`;
+                const variants = [
+                    `ပညာရေးလမ်းကြောင်းမှာ လက်ရှိကြုံနေရတဲ့ အခြေအနေကို ကြည့်ရတာ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ကိုယ်က အကောင်းဆုံး ကြိုးစားနေတာ တွေ့ရတယ်။ ရှေ့ဆက်ရမယ့် အဆင့်တွေမှာလည်း အသိဉာဏ်ပညာနဲ့ အောင်မြင်မှုတွေ ဆက်တိုက် ဝင်လာပါလိမ့်မယ်နော်။`,
+                    `လက်ရှိပညာရေး စွမ်းအင်အရ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) ကိုယ့်ရဲ့ ရည်မှန်းချက်ပန်းတိုင်ဆီ တဖြည်းဖြည်းနဲ့ အာမခံချက်ရှိရှိ ရောက်ရှိနေပါပြီ။ စိတ်ဓာတ်မကျဘဲ ဆက်တိုးလှမ်းလိုက်ပါ။`
+                ];
+                conversationalSummary = variants[Math.floor(Math.random() * variants.length)];
+            } else if (selectedSubOption.includes('rs') || selectedSubOption === 'marriage') {
+                const variants = [
+                    `အချစ်ရေးနဲ့ ပတ်သက်ပြီး ဒီကဒ်တွေက (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) နှစ်ယောက်ကြားက နားလည်မှုတွေ ပိုခိုင်မာလာမယ့်အကြောင်း ပြောပြနေတယ်။ အတိတ်က ဝေခွဲမရတာတွေ ပြေလည်ပြီး ချိုမြိန်တဲ့ အပြောင်းအလဲတွေ ရှိလာပါမယ်။`,
+                    `လက်ရှိအချစ်ရေး စွမ်းအင်ကတော့ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) တစ်ယောက်နဲ့တစ်ယောက် ပိုပြီး တန်ဖိုးထား နားလည်ပေးနိုင်မယ့် အခွင့်အလမ်းကောင်းတွေ ဖန်တီးပေးနေပါတယ်။ စိတ်ချလက်ချ ရှေ့ဆက်လိုက်ပါနော်။`
+                ];
+                conversationalSummary = variants[Math.floor(Math.random() * variants.length)];
             } else {
-                // အထွေထွေနှင့် အခြားခေါင်းစဉ်များအတွက် ဖော်ရွေသော လူပြောစကားဆန်ဆန် အဟော
-                conversationalSummary = currentLang === 'mm'
-                    ? `ဟော... ဒီကဒ်သုံးချပ် ပေါင်းစပ်လာတဲ့ ပုံစံအရဆိုရင်လေ... (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) အရင်တုန်းက ကိုယ်ဖြတ်သန်းခဲ့ရတဲ့ အဖုအထစ်တွေ၊ စိတ်ညစ်စရာလေးတွေက အခုဆိုရင် တဖြည်းဖြည်းနဲ့ အဖြေပေါ်လာပြီး ပြေလည်သွားမယ့် အချိန်ရောက်လာပြီ။ ရှေ့ဆက်ရမယ့် အနာဂတ်မှာလည်း ကိုယ်မျှော်လင့်ထားတာထက် ပိုပြီး အဆင်ပြေချောမွေ့တာတွေနဲ့ ရင်ဆိုင်ရဖို့ ရှိနေတယ်နော်။`
-                    : `Looking at this combination (${drawnResults[0].nameEN}, ${drawnResults[1].nameEN}, and ${drawnResults[2].nameEN}), whatever stress or bumps you faced previously are finally clearing up. Smoother days and happier outcomes are ahead for you!`;
+                const variants = [
+                    `ဟော... ဒီကဒ်သုံးချပ် ပေါင်းစပ်လာတဲ့ ပုံစံအရဆိုရင်လေ... (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) အရင်တုန်းက ကိုယ်ဖြတ်သန်းခဲ့ရတဲ့ အဖုအထစ်တွေ တဖြည်းဖြည်း ပြေလည်လာပါပြီ။ ရှေ့ဆက်ရမယ့်အနာဂတ်မှာ ပိုပြီး အဆင်ပြေချောမွေ့တာတွေနဲ့ ရင်ဆိုင်ရပါမယ်။`,
+                    `ဒီကဒ်တွေရဲ့ အဓိပ္ပာယ်ကတော့ (${drawnResults[0].nameMM}၊ ${drawnResults[1].nameMM} နဲ့ ${drawnResults[2].nameMM}) သင့်ရဲ့ မေးခွန်းအတွက် အလွန်ကောင်းမွန်တဲ့ လမ်းညွှန်ချက်ကို ပေးနေပါတယ်။ ကိုယ့်ကံကြမ္မာအပေါ် ယုံကြည်မှုအပြည့်နဲ့ ရှေ့ဆက်လိုက်ပါ။`
+                ];
+                conversationalSummary = variants[Math.floor(Math.random() * variants.length)];
             }
 
             summaryText.innerHTML = conversationalSummary;
@@ -1014,3 +1037,4 @@
     </script>
 </body>
 </html>
+
