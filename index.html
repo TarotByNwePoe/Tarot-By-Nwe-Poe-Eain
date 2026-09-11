@@ -132,7 +132,7 @@
         }
 
         .deck-area {
-            display: none; /* Sub-option အားလုံးရွေးပြီးမှ ပေါ်လာမည် */
+            display: none;
             flex-direction: column;
             align-items: center;
             margin: 20px 0;
@@ -200,7 +200,7 @@
             font-weight: bold;
         }
 
-        /* 🌟 ပထမပုံပါ လှပသော ပန်ကာပုံစံ ဖဲချပ်ဝိုင်းဖြန့်ခင်းမှု (Fan Spread Arc Design) */
+        /* Fan Spread Arc Design */
         .cards-spread-deck {
             position: relative;
             width: 100%;
@@ -298,20 +298,22 @@
             background: rgba(35, 75, 58, 0.7);
             border: 1px solid #d4af37;
             border-radius: 14px;
-            padding: 15px;
+            padding: 18px;
             margin-top: 15px;
             text-align: left;
         }
         .summary-box h4 {
             color: #f3e76e;
             font-size: 14px;
-            margin-bottom: 8px;
+            margin-bottom: 10px;
             text-align: center;
         }
+        /* 🌟 စာလုံးတွေမကပ်အောင် line-height နဲ့ spacing များကို ရှင်းလင်းစွာပြင်ဆင်ထားခြင်း */
         .summary-box p {
-            font-size: 13px;
-            line-height: 1.8;
-            color: #eaf4f1;
+            font-size: 13.5px;
+            line-height: 2.1;
+            letter-spacing: 0.3px;
+            color: #f4faf8;
         }
 
         .action-buttons-group {
@@ -438,7 +440,7 @@
         <div class="section-title" id="subTitleText" style="font-size: 13px; color: #f3e76e; margin-top: 10px;">အမျိုးအစား ရွေးပါ။</div>
         <div class="sub-options-container" id="subOptionsContainer"></div>
 
-        <!-- Luxury Deck & Shuffle Area (Topic အားလုံးရွေးပြီးမှ ပေါ်လာမည်) -->
+        <!-- Luxury Deck & Shuffle Area -->
         <div class="deck-area" id="deckArea">
             <div class="card-stack-container" onclick="startShuffle()">
                 <div class="stacked-card" style="transform: rotate(-6deg) translateY(-4px);"></div>
@@ -486,7 +488,7 @@
             </div>
         </div>
 
-        <!-- Social Badges (Telegram, Facebook, TikTok, LINE, Viber) -->
+        <!-- Social Badges (Telegram, Facebook, TikTok, LINE, Viber with +66626215305) -->
         <div class="social-section">
             <a href="https://t.me/Poe_manager" target="_blank" class="booking-btn" id="bookingBtnText">💬 ဆရာမနဲ့ တိုက်ရိုက်မေးမြန်းရန် (Telegram)</a>
             
@@ -511,8 +513,8 @@
                     <svg viewBox="0 0 24 24"><path d="M19.36 10.04c0-4.15-4.53-7.53-10.11-7.53-5.58 0-10.11 3.38-10.11 7.53 0 3.72 3.73 6.84 8.78 7.37.34.04.8.13.92.3.11.16.07.41.04.72l-.15.93c-.05.31-.23 1.22 1.07.67 1.3-.55 7.01-4.13 9.56-7.07 1.02-1.15 1.54-2.39 1.54-3.87z"/></svg>
                     LINE
                 </a>
-                <!-- Viber -->
-                <a href="viber://chat?number=" target="_blank" class="social-icon-badge">
+                <!-- Viber (ချိတ်ဆက်ထားသော နံပါတ် အမှန် +66626215305) -->
+                <a href="viber://chat?number=%2B66626215305" target="_blank" class="social-icon-badge">
                     <svg viewBox="0 0 24 24"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
                     Viber
                 </a>
@@ -536,7 +538,7 @@
         let chosenCards = [];
         const totalNeeded = 3;
 
-        // တာရော့တ်ကဒ် ၇၈ ချပ် အစုံအလင် နှင့် တိကျသော အဟောအကျဉ်းများ[span_2](start_span)[span_2](end_span)
+        // တာရော့တ်ကဒ် ၇၈ ချပ် အစုံအလင် နှင့် တိကျသော အဟောအကျဉ်းများ[span_10](start_span)[span_10](end_span)
         const fullTarotPool78 = [
             // Major Arcana (၂၂ ချပ်)
             { nameMM: "ကမ္ဘာဦး (The Fool)", nameEN: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg", desc: "အသစ်စတင်ခြင်း၊ အခွင့်အရေးသစ်၊ လွတ်လပ်စွာရွေးချယ်ခြင်း။ အချစ်မှာ မမျှော်လင့်ထားတဲ့တွေ့ဆုံမှု၊ အလုပ်မှာ လမ်းသစ်စမ်းဖို့အခွင့်အရေး။ သတိထားရမှာက စိတ်လောပြီး မစဉ်းစားဘဲ ခုန်ဝင်မိတာပါ။" },
@@ -762,7 +764,6 @@
                     box.onclick = () => {
                         selectedSubOption = opt.id;
                         updateSubOptions('love');
-                        checkShowShuffleBtn();
                     };
                     container.appendChild(box);
                 });
@@ -781,7 +782,6 @@
                         document.querySelectorAll('#subOptionsContainer div div').forEach(d => d.style.borderColor = 'rgba(212, 175, 55, 0.3)');
                         sBox.style.borderColor = '#f3e76e';
                         selectedSubOption = sub.id;
-                        checkShowShuffleBtn();
                     };
                     subContainer.appendChild(sBox);
                 });
@@ -799,18 +799,9 @@
                     box.onclick = () => {
                         selectedSubOption = opt.id;
                         updateSubOptions(type);
-                        checkShowShuffleBtn();
                     };
                     container.appendChild(box);
                 });
-            }
-            checkShowShuffleBtn();
-        }
-
-        // Sub-option ရွေးပြီးမှ ကဒ်မွှေရန် ခလုတ်ပေါ်လာစေရန် စစ်ဆေးခြင်း
-        function checkShowShuffleBtn() {
-            if (selectedSubOption) {
-                document.getElementById('deckArea').style.display = 'flex';
             }
         }
 
@@ -886,11 +877,11 @@
                 clearInterval(shuffleInterval);
                 document.getElementById('deckArea').style.display = 'none';
                 document.getElementById('selectionArea').style.display = 'block';
-                initFanSpreadDeck();
+                initFanSpreadDeck(); // 🌟 ပန်ကာပုံစံ ဖဲချပ်ဝိုင်းဖြန့်ခင်းမှု (Fan Spread Arc Design)
             }, 4000);
         }
 
-        // 🌟 ပထမပုံပါ လှပသော ပန်ကာပုံစံ ဖဲချပ်ဝိုင်းဖြန့်ခင်းမှု (Fan Spread Arc Design)
+        // 🌟 လှပသော ပန်ကာပုံစံ ဖဲချပ်ဝိုင်းဖြန့်ခင်းမှု (Fan Spread Arc Design)
         function initFanSpreadDeck() {
             const spread = document.getElementById('spreadDeck');
             spread.innerHTML = '';
@@ -898,8 +889,8 @@
             updateSlotsUI();
 
             let totalCards = 15;
-            let angleRange = 130;
-            let startAngle = -65;
+            let angleRange = 140;
+            let startAngle = -70;
 
             for(let i=0; i<totalCards; i++) {
                 let cardItem = document.createElement('div');
@@ -908,9 +899,9 @@
                 cardItem.style.animationDelay = `${i * 0.03}s`;
 
                 let angle = startAngle + (i * (angleRange / (totalCards - 1)));
-                let xOffset = (i - totalCards / 2) * 15;
+                let xOffset = (i - totalCards / 2) * 16;
                 
-                cardItem.style.transform = `translateX(${xOffset}px) translateY(${Math.abs(angle) * 0.15}px) rotate(${angle}deg)`;
+                cardItem.style.transform = `translateX(${xOffset}px) translateY(${Math.abs(angle) * 0.18}px) rotate(${angle}deg)`;
                 cardItem.style.transformOrigin = "bottom center";
                 
                 cardItem.onclick = () => pickCard(cardItem);
@@ -950,7 +941,7 @@
             }
         }
 
-        // ChatGPT API Integration with Category-Specific Context
+        // ChatGPT API Integration with Strict Category-Specific Context
         async function showFinalResult() {
             document.getElementById('selectionArea').style.display = 'none';
             const resSection = document.getElementById('resultSection');
@@ -983,14 +974,17 @@
             resSection.style.display = 'block';
             resSection.scrollIntoView({ behavior: 'smooth' });
 
+            // 🌟 ဤနေရာတွင် ကျန်းမာရေး သို့မဟုတ် ပညာရေးအတွက် မေးလျှင် အချစ်ရေးဆန်ဆန် မထွက်ဘဲ သက်ဆိုင်ရာ ကဏ္ဍအလိုက် တိကျစွာ ဟောပေးမည့် Fallback များကို ပြင်ဆင်ထားပါသည်
+            let categoryNameMM = selectedCategoryType === 'love' ? 'အချစ်ရေး' : selectedCategoryType === 'finance' ? 'ငွေကြေးစီးပွားရေး' : selectedCategoryType === 'health' ? 'ကျန်းမာရေး' : 'ပညာရေး';
+
             let dynamicCombinedFallbacks = [
-                `ဟော... ထွက်ပေါ်လာတဲ့ ကဒ်သုံးချပ်ရဲ့ စွမ်းအင်အရ (${selectedCategoryType} ကဏ္ဍအတွက်)၊ အတိတ်မှာ ${drawnResults[0].desc} ဖြစ်ခဲ့ပြီး ပစ္စုပ္ပန်မှာလည်း ${drawnResults[1].desc} အနေအထားမျိုး ရှိနေပါတယ်။ ရှေ့ဆက်မယ့်အနာဂတ်မှာ ${drawnResults[2].desc} သင့်အတွက် အကောင်းဆုံး အပြောင်းအလဲတွေနဲ့ ရင်ဆိုင်ရပါမယ်။`,
-                `ဒီတစ်ခါ ကျလာတဲ့ ကဒ်တွေက ညွှန်ပြနေတာကတော့ ${selectedCategoryType} ကိစ္စနဲ့ပတ်သက်ပြီး အရင်တုန်းက ${drawnResults[0].desc} ကြုံခဲ့ရပေမဲ့၊ လက်ရှိအချိန်မှာ ${drawnResults[1].desc} တည်ဆောက်နေရပါတယ်။ မကြာခင်မှာပဲ ${drawnResults[2].desc} အောင်မြင်မှု ရရှိလာပါမယ်။`,
-                `ဒီကဒ်သုံးချပ်ရဲ့ ပေါင်းစပ်ဟောကိန်းအရ (${selectedCategoryType})၊ အတိတ်ရဲ့အတွေ့အကြုံ (${drawnResults[0].desc}) က ယခုလက်ရှိအခြေအနေ (${drawnResults[1].desc}) ကို များစွာ အထောက်အကူပြုနေပြီး၊ နောင်လာမယ့်အနာဂတ်မှာ ${drawnResults[2].desc} အကောင်းဆုံး ရလဒ်ကို ပိုင်ဆိုင်ရပါမယ်။`
+                `ဟော... ${categoryNameMM}အတွက် ထွက်ပေါ်လာတဲ့ ကဒ်သုံးချပ်ရဲ့ စွမ်းအင်အရ၊ အတိတ်မှာ ${drawnResults[0].desc} ဖြစ်ခဲ့ပြီး ပစ္စုပ္ပန်မှာလည်း ${drawnResults[1].desc} အနေအထားမျိုး ရှိနေပါတယ်။ ရှေ့ဆက်မယ့်အနာဂတ်မှာ ${drawnResults[2].desc} သင့်အတွက် အကောင်းဆုံး တိုးတက်မှုတွေနဲ့ ရင်ဆိုင်ရပါမယ်။`,
+                `ဒီတစ်ခါ ကျလာတဲ့ ကဒ်တွေက ${categoryNameMM}နဲ့ပတ်သက်ပြီး အရင်တုန်းက ${drawnResults[0].desc} ကြုံခဲ့ရပေမဲ့၊ လက်ရှိအချိန်မှာ ${drawnResults[1].desc} အနေနဲ့ အာရုံစိုက်နေရပါတယ်။ မကြာခင်မှာပဲ ${drawnResults[2].desc} အကောင်းဆုံး ရလဒ်တွေ ပိုင်ဆိုင်ရပါမယ်။`,
+                `ဒီကဒ်သုံးချပ်ရဲ့ ပေါင်းစပ်ဟောကိန်းအရ (${categoryNameMM}အတွက်)၊ အတိတ်ရဲ့အတွေ့အကြုံ (${drawnResults[0].desc}) က ယခုလက်ရှိအခြေအနေ (${drawnResults[1].desc}) ကို များစွာ အထောက်အကူပြုနေပြီး၊ နောင်လာမယ့်အနာဂတ်မှာ ${drawnResults[2].desc} အောင်မြင်မှု ရရှိစေမှာပါနော်။`
             ];
             let selectedFallback = dynamicCombinedFallbacks[Math.floor(Math.random() * dynamicCombinedFallbacks.length)];
 
-            let promptText = `သင်သည် မြန်မာ့ရိုးရာနှင့် တာရော့တ်ဗေဒင်ပညာကို ကျွမ်းကျင်သော နားဝင်ချိုပြီး စိတ်ဓာတ်ခွန်အားပေးတတ်သည့် နာမည်ကြီး ဆရာမတစ်ဦး ဖြစ်ပါသည်။ အသုံးပြုသူက '${selectedCategoryType}' ကဏ္ဍ (ရွေးချယ်ထားသော ခေါင်းစဉ်: ${selectedSubOption}) အတွက် တာရော့တ်ကဒ် ၃ ချပ် ရွေးချယ်ထားပါသည်။ ထိုကဒ်များ၏ အနှစ်ချုပ်များမှာ - 1 (အတိတ်): ${drawnResults[0].desc}, 2 (ပစ္စုပ္ပန်): ${drawnResults[1].desc}, 3 (အနာဂတ်): ${drawnResults[2].desc} ဖြစ်ပါသည်။ တကယ့် လူဗေဒင်ဆရာမတစ်ဦးက ရင်ဘတ်ချင်းနီးနီး ဖော်ရွေစွာ၊ နားလည်လွယ်စွာဖြင့် လူပြောစကားသံစစ်စစ်ဖြင့် ဟောပြောနေသကဲ့သို့ (${selectedCategoryType} ကဏ္ဍအတွက် သီးသန့် အဓိပ္ပာယ်ဖော်၍) အတိတ်၊ ပစ္စုပ္ပန်၊ အနာဂတ် ၃ ခုလုံးကို ပေါင်းစပ်ပြီး အဟောအကျဉ်းကို မြန်မာလို ရေးပေးပါ။ အရေးကြီးသည်မှာ: အဟောအကျဉ်းစာသားအတွင်းသို့ တာရော့တ်ကဒ်နာမည်များ လုံးဝ (လုံးဝ) မထည့်ရပါ။ 'AI' သို့မဟုတ် 'စက်ပစ္စည်း' ဟူ၍လည်း လုံးဝမသုံးရပါ။`;
+            let promptText = `သင်သည် မြန်မာ့ရိုးရာနှင့် တာရော့တ်ဗေဒင်ပညာကို ကျွမ်းကျင်သော နားဝင်ချိုပြီး စိတ်ဓာတ်ခွန်အားပေးတတ်သည့် နာမည်ကြီး ဆရာမတစ်ဦး ဖြစ်ပါသည်။ အသုံးပြုသူက '${selectedCategoryType}' (${categoryNameMM}) ကဏ္ဍအတွက် တာရော့တ်ကဒ် ၃ ချပ် ရွေးချယ်ထားပါသည်။ ထိုကဒ်များ၏ အနှစ်ချုပ်များမှာ - 1 (အတိတ်): ${drawnResults[0].desc}, 2 (ပစ္စုပ္ပန်): ${drawnResults[1].desc}, 3 (အနာဂတ်): ${drawnResults[2].desc} ဖြစ်ပါသည်။ တကယ့် လူဗေဒင်ဆရာမတစ်ဦးက ရင်ဘတ်ချင်းနီးနီး ဖော်ရွေစွာဖြင့် (${categoryNameMM} ကဏ္ဍအတွက်သာ သီးသန့် အဓိပ္ပာယ်ဖော်၍ - အချစ်ရေးအကြောင်း လုံးဝမထည့်ရပါ) အတိတ်၊ ပစ္စုပ္ပန်၊ အနာဂတ် ၃ ခုလုံးကို ပေါင်းစပ်ပြီး အဟောအကျဉ်းကို မြန်မာလို ရေးပေးပါ။ အရေးကြီးသည်မှာ: အဟောအကျဉ်းစာသားအတွင်းသို့ တာရော့တ်ကဒ်နာမည်များ လုံးဝ (လုံးဝ) မထည့်ရပါ။ 'AI' သို့မဟုတ် 'စက်ပစ္စည်း' ဟူ၍လည်း လုံးဝမသုံးရပါ။`;
 
             try {
                 let response = await fetch('https://api.openai.com/v1/chat/completions', {
@@ -1021,7 +1015,7 @@
             chosenCards = [];
             document.getElementById('resultSection').style.display = 'none';
             document.getElementById('selectionArea').style.display = 'none';
-            document.getElementById('deckArea').style.display = 'none'; // ပြန်စချိန်တွင် Sub-option မရွေးရသေးသဖြင့် ဖျောက်ထားမည်
+            document.getElementById('deckArea').style.display = 'flex';
             document.getElementById('shuffleBtn').textContent = "✨ ကဒ်ကို မွှေမည် (4s)";
             document.getElementById('shuffleBtn').style.opacity = "1";
             document.getElementById('shuffleBtn').style.pointerEvents = "auto";
@@ -1032,7 +1026,6 @@
                 cards[1].style.transform = 'rotate(3deg) translateY(-2px)';
                 cards[2].style.transform = 'rotate(0deg)';
             }
-            updateSubOptions(selectedCategoryType);
         }
 
         async function loadCloudUpdate() {
