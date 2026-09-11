@@ -132,7 +132,7 @@
         }
 
         .deck-area {
-            display: flex;
+            display: none; /* Sub-option အားလုံးရွေးပြီးမှ ပေါ်လာမည် */
             flex-direction: column;
             align-items: center;
             margin: 20px 0;
@@ -200,56 +200,55 @@
             font-weight: bold;
         }
 
-        /* 🌟 CSS 3D Transforms Modern Grid Card Selection */
+        /* 🌟 ပထမပုံပါ လှပသော ပန်ကာပုံစံ ဖဲချပ်ဝိုင်းဖြန့်ခင်းမှု (Fan Spread Arc Design) */
         .cards-spread-deck {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            gap: 10px;
+            position: relative;
             width: 100%;
-            margin: 15px 0;
-            max-height: 280px;
-            overflow-y: auto;
-            padding: 5px;
+            height: 160px;
+            margin: 25px 0 15px 0;
+            display: flex;
+            justify-content: center;
+            align-items: flex-end;
             perspective: 1200px;
         }
         .spread-card-item {
-            width: 100%;
-            aspect-ratio: 2/3;
+            position: absolute;
+            width: 52px;
+            height: 92px;
             background-image: url('card-back.png');
             background-size: cover;
             background-position: center;
             border: 1.5px solid #d4af37;
-            border-radius: 10px;
+            border-radius: 8px;
             cursor: pointer;
-            transform-style: preserve-3d;
+            transform-origin: bottom center;
             will-change: transform, opacity;
-            transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, opacity 0.3s ease;
-            box-shadow: 0 6px 16px rgba(0,0,0,0.6);
-            animation: card3DEnter 0.6s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
+            transition: transform 0.35s cubic-bezier(0.175, 0.885, 0.32, 1.275), box-shadow 0.3s ease, opacity 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.6);
+            animation: cardFanEnter 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275) forwards;
             opacity: 0;
         }
 
-        @keyframes card3DEnter {
+        @keyframes cardFanEnter {
             0% {
                 opacity: 0;
-                transform: translateY(50px) rotateX(-30deg) scale(0.6);
+                transform: translateY(40px) scale(0.5) rotate(0deg);
             }
             100% {
                 opacity: 1;
-                transform: translateY(0) rotateX(0deg) scale(1);
             }
         }
 
-        .spread-card-item:hover {
-            transform: translateY(-10px) rotateX(12deg) rotateY(5deg) scale(1.12);
-            box-shadow: 0 15px 30px rgba(212, 175, 55, 0.85);
+        .spread-card-item:hover { 
+            transform: translateY(-22px) scale(1.2) rotate(0deg) !important; 
+            box-shadow: 0 12px 28px rgba(212, 175, 55, 0.85);
+            z-index: 100;
             border-color: #fff;
-            z-index: 10;
         }
         .spread-card-item.chosen {
             opacity: 0.2;
             pointer-events: none;
-            transform: scale(0.8) translateZ(-30px);
+            transform: translateY(-35px) scale(0.8) !important;
         }
 
         .result-section {
@@ -439,7 +438,7 @@
         <div class="section-title" id="subTitleText" style="font-size: 13px; color: #f3e76e; margin-top: 10px;">အမျိုးအစား ရွေးပါ။</div>
         <div class="sub-options-container" id="subOptionsContainer"></div>
 
-        <!-- Luxury Deck & Shuffle Area -->
+        <!-- Luxury Deck & Shuffle Area (Topic အားလုံးရွေးပြီးမှ ပေါ်လာမည်) -->
         <div class="deck-area" id="deckArea">
             <div class="card-stack-container" onclick="startShuffle()">
                 <div class="stacked-card" style="transform: rotate(-6deg) translateY(-4px);"></div>
@@ -457,7 +456,7 @@
                 <div class="slot-box" id="slot1">၂ ခုမြောက်</div>
                 <div class="slot-box" id="slot2">၃ ခုမြောက်</div>
             </div>
-            <p style="text-align: center; font-size: 11px; color: #a3c1ad; margin-bottom: 5px;">အောက်ပါ ကဒ်များထဲမှ ၃ ချပ်ကို နှိပ်၍ ရွေးပါ</p>
+            <p style="text-align: center; font-size: 11px; color: #a3c1ad; margin-bottom: 5px;">အောက်ပါ ပန်ကာပုံစံ ဖဲချပ်တန်းမှ ၃ ချပ် ရွေးပါ</p>
             <div class="cards-spread-deck" id="spreadDeck"></div>
         </div>
 
@@ -537,7 +536,7 @@
         let chosenCards = [];
         const totalNeeded = 3;
 
-        // တာရော့တ်ကဒ် ၇၈ ချပ် အစုံအလင် နှင့် သက်ဆိုင်ရာ အဟောအကျဉ်းများ[span_6](start_span)[span_6](end_span)
+        // တာရော့တ်ကဒ် ၇၈ ချပ် အစုံအလင် နှင့် တိကျသော အဟောအကျဉ်းများ[span_2](start_span)[span_2](end_span)
         const fullTarotPool78 = [
             // Major Arcana (၂၂ ချပ်)
             { nameMM: "ကမ္ဘာဦး (The Fool)", nameEN: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg", desc: "အသစ်စတင်ခြင်း၊ အခွင့်အရေးသစ်၊ လွတ်လပ်စွာရွေးချယ်ခြင်း။ အချစ်မှာ မမျှော်လင့်ထားတဲ့တွေ့ဆုံမှု၊ အလုပ်မှာ လမ်းသစ်စမ်းဖို့အခွင့်အရေး။ သတိထားရမှာက စိတ်လောပြီး မစဉ်းစားဘဲ ခုန်ဝင်မိတာပါ။" },
@@ -763,6 +762,7 @@
                     box.onclick = () => {
                         selectedSubOption = opt.id;
                         updateSubOptions('love');
+                        checkShowShuffleBtn();
                     };
                     container.appendChild(box);
                 });
@@ -781,6 +781,7 @@
                         document.querySelectorAll('#subOptionsContainer div div').forEach(d => d.style.borderColor = 'rgba(212, 175, 55, 0.3)');
                         sBox.style.borderColor = '#f3e76e';
                         selectedSubOption = sub.id;
+                        checkShowShuffleBtn();
                     };
                     subContainer.appendChild(sBox);
                 });
@@ -798,9 +799,18 @@
                     box.onclick = () => {
                         selectedSubOption = opt.id;
                         updateSubOptions(type);
+                        checkShowShuffleBtn();
                     };
                     container.appendChild(box);
                 });
+            }
+            checkShowShuffleBtn();
+        }
+
+        // Sub-option ရွေးပြီးမှ ကဒ်မွှေရန် ခလုတ်ပေါ်လာစေရန် စစ်ဆေးခြင်း
+        function checkShowShuffleBtn() {
+            if (selectedSubOption) {
+                document.getElementById('deckArea').style.display = 'flex';
             }
         }
 
@@ -876,20 +886,33 @@
                 clearInterval(shuffleInterval);
                 document.getElementById('deckArea').style.display = 'none';
                 document.getElementById('selectionArea').style.display = 'block';
-                initModernGridDeck();
+                initFanSpreadDeck();
             }, 4000);
         }
 
-        function initModernGridDeck() {
+        // 🌟 ပထမပုံပါ လှပသော ပန်ကာပုံစံ ဖဲချပ်ဝိုင်းဖြန့်ခင်းမှု (Fan Spread Arc Design)
+        function initFanSpreadDeck() {
             const spread = document.getElementById('spreadDeck');
             spread.innerHTML = '';
             chosenCards = [];
             updateSlotsUI();
 
-            let totalCardsInGrid = 12;
-            for(let i=0; i<totalCardsInGrid; i++) {
+            let totalCards = 15;
+            let angleRange = 130;
+            let startAngle = -65;
+
+            for(let i=0; i<totalCards; i++) {
                 let cardItem = document.createElement('div');
                 cardItem.className = 'spread-card-item';
+                
+                cardItem.style.animationDelay = `${i * 0.03}s`;
+
+                let angle = startAngle + (i * (angleRange / (totalCards - 1)));
+                let xOffset = (i - totalCards / 2) * 15;
+                
+                cardItem.style.transform = `translateX(${xOffset}px) translateY(${Math.abs(angle) * 0.15}px) rotate(${angle}deg)`;
+                cardItem.style.transformOrigin = "bottom center";
+                
                 cardItem.onclick = () => pickCard(cardItem);
                 spread.appendChild(cardItem);
             }
@@ -998,7 +1021,7 @@
             chosenCards = [];
             document.getElementById('resultSection').style.display = 'none';
             document.getElementById('selectionArea').style.display = 'none';
-            document.getElementById('deckArea').style.display = 'flex';
+            document.getElementById('deckArea').style.display = 'none'; // ပြန်စချိန်တွင် Sub-option မရွေးရသေးသဖြင့် ဖျောက်ထားမည်
             document.getElementById('shuffleBtn').textContent = "✨ ကဒ်ကို မွှေမည် (4s)";
             document.getElementById('shuffleBtn').style.opacity = "1";
             document.getElementById('shuffleBtn').style.pointerEvents = "auto";
@@ -1009,6 +1032,7 @@
                 cards[1].style.transform = 'rotate(3deg) translateY(-2px)';
                 cards[2].style.transform = 'rotate(0deg)';
             }
+            updateSubOptions(selectedCategoryType);
         }
 
         async function loadCloudUpdate() {
