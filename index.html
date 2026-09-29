@@ -552,34 +552,34 @@
         let totalNeeded = 3;
         let chosenCards = [];
 
-        // တာရော့တ်ကဒ် ၇၈ ချပ် အစုံအလင် (Major နှင့် Minor Arcana အားလုံး အပြည့်အစုံ)[span_3](start_span)[span_3](end_span)
+        // တာရော့တ်ကဒ် ၇၈ ချပ် အစုံအလင် (Major Arcana ၂၂ ချပ် နှင့် Minor Arcana ၅၆ ချပ်)[span_9](start_span)[span_9](end_span)
         const fullTarotPool78 = [
             // Major Arcana (၂၂ ချပ်)
-            { nameMM: "ကမ္ဘာဦး (The Fool)", nameEN: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg", desc: "အသစ်စတင်ခြင်း၊ အခွင့်အရေးသစ်၊ လွတ်လပ်စွာရွေးချယ်ခြင်း။ အချစ်မှာ မမျှော်လင့်ထားတဲ့တွေ့ဆုံမှု၊ အလုပ်မှာ လမ်းသစ်စမ်းဖို့အခွင့်အရေး။" },
-            { nameMM: "မှော်ဆရာ (The Magician)", nameEN: "The Magician", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg", desc: "ကိုယ့်လက်ထဲမှာ လိုအပ်တဲ့အရည်အချင်းတွေ ရှိနေပြီ။ အချစ်မှာ ဆွဲဆောင်မှုကောင်း၊ အလုပ်မှာ ကိုယ်တိုင်ဖန်တီးပြီး အောင်မြင်နိုင်ခြေ။" },
-            { nameMM: "မဟာပညာရှိ (The High Priestess)", nameEN: "The High Priestess", img: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg", desc: "အတွင်းစိတ်အသံကို နားထောင်ရမယ့်အချိန်။ နောက်ကွယ်ကအချက်အလက်တွေကို အရင်လေ့လာပါ။" },
-            { nameMM: "မဟေသီ (The Empress)", nameEN: "The Empress", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_03_Empress.jpg", desc: "တိုးတက်ခြင်း၊ အေးချမ်းခြင်းနဲ့ ပေါများခြင်း။ ဖန်တီးနိုင်စွမ်းနဲ့ တိုးတက်မှုကို ပြတယ်။" },
-            { nameMM: "ဧကရာဇ် (The Emperor)", nameEN: "The Emperor", img: "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg", desc: "စည်းကမ်း၊ တာဝန်ယူမှုနဲ့ တည်ငြိမ်မှု။ ခေါင်းဆောင်မှုနဲ့ အာဏာရှိလာခြင်းကို ပြတယ်။" },
-            { nameMM: "ပုရောဟိတ်မင်း (The Hierophant)", nameEN: "The Hierophant", img: "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg", desc: "ရိုးရာတန်ဖိုး၊ သင်ယူမှုနဲ့ တရားဝင်ကတိကဝတ်။ ဆရာကောင်းလမ်းညွှန်မှု ရမယ်။" },
-            { nameMM: "ချစ်သူများ (The Lovers)", nameEN: "The Lovers", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_06_Lovers.jpg", desc: "အချစ်၊ ဆက်သွယ်မှုနဲ့ အရေးကြီးတဲ့ရွေးချယ်မှု။ နှစ်ဦးကြားဆက်နွယ်မှုအားကောင်းတယ်။" },
-            { nameMM: "အောင်ပွဲရထား (The Chariot)", nameEN: "The Chariot", img: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg", desc: "စိတ်ဓာတ်ခိုင်မာပြီး ရည်မှန်းချက်ကို ဆက်သွားရင် အောင်မြင်မှုရနိုင်တယ်။" },
-            { nameMM: "ခွန်အား (Strength)", nameEN: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg", desc: "အင်အားဆိုတာ အော်ဟစ်ခြင်းမဟုတ်ဘဲ စိတ်ကိုထိန်းနိုင်ခြင်းပါ။ သည်းခံမှုနဲ့ အောင်မြင်မှု။" },
-            { nameMM: "Hermit (ရသေ့)", nameEN: "The Hermit", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg", desc: "ခဏနားပြီး ကိုယ့်အတွင်းစိတ်ကို ပြန်ကြည့်ဖို့လိုတယ်။ ကိုယ်တိုင်လေ့လာရှာဖွေခြင်း။" },
-            { nameMM: "ကံတရားဘီး (Wheel of Fortune)", nameEN: "Wheel of Fortune", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg", desc: "အခြေအနေတွေ ပြောင်းလဲလာမယ်။ ကံကောင်းတဲ့အလှည့် ရောက်လာနိုင်တယ်။" },
-            { nameMM: "တရားမျှတမှု (Justice)", nameEN: "Justice", img: "https://upload.wikimedia.org/wikipedia/commons/9/95/RWS_Tarot_11_Justice.jpg", desc: "အမှန်တရား၊ မျှတမှုနဲ့ ဆုံးဖြတ်ချက်။ ကိုယ်လုပ်ခဲ့တာနဲ့ ကိုက်ညီတဲ့ရလဒ်ရမယ်။" },
-            { nameMM: "ဆွဲထားသူ (The Hanged Man)", nameEN: "The Hanged Man", img: "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg", desc: "အခုချိန်မှာ အတင်းရှေ့ဆက်တာထက် ခဏရပ်ပြီး အမြင်ပြောင်းကြည့်ဖို့လိုတယ်။" },
-            { nameMM: "မုချပြောင်းလဲခြင်း (Death)", nameEN: "Death", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg", desc: "အဆုံးသတ်တစ်ခုကနေ အသစ်တစ်ခု စတင်ခြင်း။ လမ်းသစ်ဖွင့်နိုင်တယ်။" },
-            { nameMM: "မျှတခန့်ညားမှု (Temperance)", nameEN: "Temperance", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg", desc: "မျှတမှု၊ စိတ်ရှည်မှုနဲ့ အရာတွေကို အလယ်အလတ်ထားနိုင်ခြင်း။" },
-            { nameMM: "မာရ်နတ် (The Devil)", nameEN: "The Devil", img: "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg", desc: "တွယ်တာမှု၊ ဆွဲဆောင်မှုနဲ့ ကိုယ့်ကိုယ်ကို ချုပ်နှောင်ထားတဲ့အရာတွေကို ပြတယ်။" },
-            { nameMM: "ပြိုလဲသောမျှော်စင် (The Tower)", nameEN: "The Tower", img: "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg", desc: "မမျှော်လင့်ထားတဲ့ ပြောင်းလဲမှုကြီးတစ်ခု။ အမှန်တရားပေါ်လာနိုင်တယ်။" },
-            { nameMM: "ကြယ်တာရာ (The Star)", nameEN: "The Star", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/Tarot_The_Star.jpg", desc: "မျှော်လင့်ချက်၊ ပြန်လည်ကောင်းမွန်မှုနဲ့ အနာဂတ်အပေါ်ယုံကြည်မှု။" },
-            { nameMM: "လမင်း (The Moon)", nameEN: "The Moon", img: "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg", desc: "မသေချာမှု၊ စိုးရိမ်စိတ်နဲ့ မမြင်ရသေးတဲ့အချက်တွေ။" },
-            { nameMM: "နေမင်းကြီး (The Sun)", nameEN: "The Sun", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg", desc: "ပျော်ရွှင်မှု၊ အောင်မြင်မှုနဲ့ ရှင်းလင်းတဲ့ရလဒ်။ တောက်ပတဲ့အနာဂတ်။" },
-            { nameMM: "တရားစီရင်ခြင်း (Judgement)", nameEN: "Judgement", img: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg", desc: "အတိတ်ကို ပြန်သုံးသပ်ပြီး အရေးကြီးတဲ့ဆုံးဖြတ်ချက်ချရမယ့်အချိန်။" },
-            { nameMM: "ကမ္ဘာလောက (The World)", nameEN: "The World", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg", desc: "Cycle တစ်ခု ပြီးဆုံးပြီး ရလဒ်ရရှိခြင်း။ အောင်မြင်မှုနဲ့ အဆင့်သစ်တက်ခြင်း။" },
+            { nameMM: "ကမ္ဘာဦး (The Fool)", nameEN: "The Fool", img: "https://upload.wikimedia.org/wikipedia/commons/9/90/RWS_Tarot_00_Fool.jpg", desc: "အသစ်စတင်ခြင်း၊ အခွင့်အရေးသစ်၊ လွတ်လပ်စွာရွေးချယ်ခြင်း။" },
+            { nameMM: "မှော်ဆရာ (The Magician)", nameEN: "The Magician", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_01_Magician.jpg", desc: "ကိုယ့်လက်ထဲမှာ လိုအပ်တဲ့အရည်အချင်းတွေ ရှိနေပြီ။ ကိုယ်တိုင်ဖန်တီးအကောင်အထည်ဖော်ပါ။" },
+            { nameMM: "မဟာပညာရှိ (The High Priestess)", nameEN: "The High Priestess", img: "https://upload.wikimedia.org/wikipedia/commons/8/88/RWS_Tarot_02_High_Priestess.jpg", desc: "အတွင်းစိတ်အသံကို နားထောင်ရမယ့်အချိန်။ နောက်ကွယ်ကအချက်အလက်တွေကို လေ့လာပါ။" },
+            { nameMM: "မဟေသီ (The Empress)", nameEN: "The Empress", img: "https://upload.wikimedia.org/wikipedia/commons/d/de/RWS_Tarot_03_Empress.jpg", desc: "တိုးတက်ခြင်း၊ အေးချမ်းခြင်းနဲ့ ဖန်တီးနိုင်စွမ်း မြင့်မားနေတဲ့ အချိန်ဖြစ်ပါတယ်။" },
+            { nameMM: "ဧကရာဇ် (The Emperor)", nameEN: "The Emperor", img: "https://upload.wikimedia.org/wikipedia/commons/c/c3/RWS_Tarot_04_Emperor.jpg", desc: "စည်းကမ်း၊ တာဝန်ယူမှုနဲ့ ခိုင်မာတဲ့ တည်ငြိမ်မှုတို့ဖြင့် ရှေ့ဆက်ပါ။" },
+            { nameMM: "ပုရောဟိတ်မင်း (The Hierophant)", nameEN: "The Hierophant", img: "https://upload.wikimedia.org/wikipedia/commons/8/8d/RWS_Tarot_05_Hierophant.jpg", desc: "ရိုးရာဓလေ့၊ ပညာရှင်များ၏ လမ်းညွှန်မှုနှင့် စနစ်တကျ သင်ယူမှုက အကျိုးရှိမယ်။" },
+            { nameMM: "ချစ်သူများ (The Lovers)", nameEN: "The Lovers", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/RWS_Tarot_06_Lovers.jpg", desc: "အရေးကြီးတဲ့ ဆုံးဖြတ်ချက်ချရခြင်းနဲ့ နှစ်ဦးကြား စစ်မှန်နက်ရှိုင်းတဲ့ ဆက်နွယ်မှု။" },
+            { nameMM: "အောင်ပွဲရထား (The Chariot)", nameEN: "The Chariot", img: "https://upload.wikimedia.org/wikipedia/commons/9/9b/RWS_Tarot_07_Chariot.jpg", desc: "စိတ်ဓာတ်ခိုင်မာပြီး ရည်မှန်းချက်ကို ဆက်သွားရင် အတားအဆီးမှန်သမျှ ကျော်ဖြတ်နိုင်မယ်။" },
+            { nameMM: "ခွန်အား (Strength)", nameEN: "Strength", img: "https://upload.wikimedia.org/wikipedia/commons/f/f5/RWS_Tarot_08_Strength.jpg", desc: "စိတ်ကိုထိန်းနိုင်စွမ်းနဲ့ သည်းခံခြင်းတရားက အခက်အခဲကို ကျော်လွှားစေမည့် သော့ချက်ပါ။" },
+            { nameMM: "Hermit (ရသေ့)", nameEN: "The Hermit", img: "https://upload.wikimedia.org/wikipedia/commons/4/4d/RWS_Tarot_09_Hermit.jpg", desc: "ခဏနားပြီး ကိုယ့်အတွင်းစိတ်ကို ပြန်လည်ဆင်ခြင်သုံးသပ်ဖို့ လိုအပ်ပါတယ်။" },
+            { nameMM: "ကံတရားဘီး (Wheel of Fortune)", nameEN: "Wheel of Fortune", img: "https://upload.wikimedia.org/wikipedia/commons/3/3c/RWS_Tarot_10_Wheel_of_Fortune.jpg", desc: "ကံတရားရဲ့ အလှည့်အပြောင်းကောင်းတွေနဲ့အတူ အခွင့်အလမ်းသစ်တွေ ဝင်ရောက်လာမယ်။" },
+            { nameMM: "တရားမျှတမှု (Justice)", nameEN: "Justice", img: "https://upload.wikimedia.org/wikipedia/commons/9/95/RWS_Tarot_11_Justice.jpg", desc: "မှန်ကန်တဲ့ ဆုံးဖြတ်ချက်တွေနဲ့ အပြန်အလှန်ရိုးသားမှုတို့က တရားမျှတတဲ့ရလဒ်ပေးမယ်။" },
+            { nameMM: "ဆွဲထားသူ (The Hanged Man)", nameEN: "The Hanged Man", img: "https://upload.wikimedia.org/wikipedia/commons/2/2b/RWS_Tarot_12_Hanged_Man.jpg", desc: "ခဏရပ်ပြီး အမြင်ပြောင်းကြည့်ဖို့နဲ့ စောင့်ဆိုင်းချိန်ပေးဖို့ လိုအပ်နေတဲ့ အနေအထား။" },
+            { nameMM: "မုချပြောင်းလဲခြင်း (Death)", nameEN: "Death", img: "https://upload.wikimedia.org/wikipedia/commons/d/d7/RWS_Tarot_13_Death.jpg", desc: "ဟောင်းနွမ်းတာတွေ ပြီးဆုံးပြီး အစသစ်တစ်ခု၊ လမ်းသစ်ဖွင့်လှစ်နိုင်မည့် အပြောင်းအလဲ။" },
+            { nameMM: "မျှတခန့်ညားမှု (Temperance)", nameEN: "Temperance", img: "https://upload.wikimedia.org/wikipedia/commons/f/f8/RWS_Tarot_14_Temperance.jpg", desc: "မျှတမှု၊ စိတ်ရှည်မှုနဲ့ အရာတွေကို အလယ်အလတ်ထားနိုင်စွမ်း ရှိနေပါတယ်။" },
+            { nameMM: "မာရ်နတ် (The Devil)", nameEN: "The Devil", img: "https://upload.wikimedia.org/wikipedia/commons/5/55/RWS_Tarot_15_Devil.jpg", desc: "မလိုအပ်တဲ့ စွဲလမ်းမှုတွေနဲ့ ကိုယ့်ကိုကိုယ် ချုပ်နှောင်ထားတာတွေကနေ ရုန်းထွက်ပါ။" },
+            { nameMM: "ပြိုလဲသောမျှော်စင် (The Tower)", nameEN: "The Tower", img: "https://upload.wikimedia.org/wikipedia/commons/5/53/RWS_Tarot_16_Tower.jpg", desc: "မမျှော်လင့်ထားတဲ့ ပြောင်းလဲမှုတွေကြားကနေ အမှန်တရားကို သိမြင်လာရပါမယ်။" },
+            { nameMM: "ကြယ်တာရာ (The Star)", nameEN: "The Star", img: "https://upload.wikimedia.org/wikipedia/commons/d/db/Tarot_The_Star.jpg", desc: "မျှော်လင့်ချက်အသစ်တွေ၊ စိတ်နှလုံးချမ်းသာမှုနဲ့ ကံကောင်းခြင်းတွေ ဝင်ရောက်လာမယ်။" },
+            { nameMM: "လမင်း (The Moon)", nameEN: "The Moon", img: "https://upload.wikimedia.org/wikipedia/commons/7/7f/RWS_Tarot_18_Moon.jpg", desc: "စိုးရိမ်ပူပန်မှုတွေနဲ့ ဝေခွဲမရဖြစ်တာတွေ ရှိနိုင်ပေမယ့် သေချာစစ်ဆေးပါဦး။" },
+            { nameMM: "နေမင်းကြီး (The Sun)", nameEN: "The Sun", img: "https://upload.wikimedia.org/wikipedia/commons/1/17/RWS_Tarot_19_Sun.jpg", desc: "ပျော်ရွှင်မှု၊ အောင်မြင်မှုနဲ့ တောက်ပတဲ့ အနာဂတ်က သင့်ရှေ့မှာ အသင့်ရှိနေပါတယ်။" },
+            { nameMM: "တရားစီရင်ခြင်း (Judgement)", nameEN: "Judgement", img: "https://upload.wikimedia.org/wikipedia/commons/d/dd/RWS_Tarot_20_Judgement.jpg", desc: "အတိတ်ကို ပြန်သုံးသပ်ပြီး အရေးကြီးတဲ့ ဆုံးဖြတ်ချက်ချရမယ့်အချိန်ရောက်ပါပြီ။" },
+            { nameMM: "ကမ္ဘာလောက (The World)", nameEN: "The World", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/RWS_Tarot_21_World.jpg", desc: "လုပ်ငန်းတစ်ခု အောင်မြင်စွာ ပြီးဆုံးခြင်းနဲ့ အဆင့်သစ်တစ်ခုဆီ တက်လှမ်းခြင်း။" },
 
             // Wands Suit (၁၄ ချပ်)
-            { nameMM: "တုတ်တံများ၏ အစ (Ace of Wands)", nameEN: "Ace of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg", desc: "စိတ်အားထက်သန်မှုနဲ့ အစပြုမယ့်အခွင့်အရေး။ လုပ်ငန်းသစ် စတင်ဖို့အချိန်။" },
+            { nameMM: "တုတ်တံများ၏ အစ (Ace of Wands)", nameEN: "Ace of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/1/11/Wands01.jpg", desc: "စိတ်အားထက်သန်မှုနဲ့ လုပ်ငန်းသစ်၊ အခွင့်အလမ်းသစ်တွေ စတင်ဖို့ အကောင်းဆုံးအချိန်။" },
             { nameMM: "တုတ်တံ နှစ်ချောင်း (Two of Wands)", nameEN: "Two of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/0/0f/Wands02.jpg", desc: "အနာဂတ်ကို စီစဉ်ပြီး လမ်းနှစ်လမ်းထဲက ရွေးချယ်ရမယ့် အနေအထား။" },
             { nameMM: "တုတ်တံ သုံးချောင်း (Three of Wands)", nameEN: "Three of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/f/ff/Wands03.jpg", desc: "စောင့်မျှော်ထားတဲ့အရာ တဖြည်းဖြည်းရောက်လာမယ်။ အခွင့်အရေးသစ်များ။" },
             { nameMM: "တုတ်တံ လေးချောင်း (Four of Wands)", nameEN: "Four of Wands", img: "https://upload.wikimedia.org/wikipedia/commons/c/c2/Wands04.jpg", desc: "ပျော်ရွှင်စရာအခမ်းအနား၊ တည်ငြိမ်မှုနဲ့ အောင်မြင်မှု။" },
@@ -848,7 +848,6 @@
             }, 4000);
         }
 
-        // Fan Spread Arc Design for Card Picking
         function initFanSpreadDeck() {
             const spread = document.getElementById('spreadDeck');
             spread.innerHTML = '';
@@ -953,7 +952,8 @@
             let cardsDescString = drawnResults.map(c => c.desc).join(" / ");
             let selectedFallback = `ဟော... ${categoryNameMM}အတွက် ထွက်ပေါ်လာတဲ့ ကဒ်စွမ်းအင်များအရ (${cardsDescString}) သင့်ရဲ့ မေးမြန်းထားသော ${categoryNameMM}ကိစ္စအတွက် အကောင်းဆုံး လမ်းညွှန်ချက်နဲ့ အပြောင်းအလဲများ ကြုံတွေ့ရပါလိမ့်မယ်နော်။`;
 
-            let promptText = `သင်သည် မြန်မာ့ရိုးရာနှင့် တာရော့တ်ဗေဒင်ပညာကို ကျွမ်းကျင်သော နားဝင်ချိုပြီး စိတ်ဓာတ်ခွန်အားပေးတတ်သည့် နာမည်ကြီး ဆရာမတစ်ဦး ဖြစ်ပါသည်။ အသုံးပြုသူက '${selectedCategoryType}' (${categoryNameMM}) ကဏ္ဍအတွက် တာရော့တ်ကဒ် ${totalNeeded} ချပ် ရွေးချယ်ထားပါသည်။ ထိုကဒ်များ၏ အနှစ်ချုပ်များမှာ: ${cardsDescString} ဖြစ်ပါသည်။ တကယ့် လူဗေဒင်ဆရာမတစ်ဦးက ရင်ဘတ်ချင်းနီးနီး ဖော်ရွေစွာဖြင့် (${categoryNameMM} ကဏ္ဍအတွက်သာ သီးသန့် အဓိပ္ပာယ်ဖော်၍) ဟောပြောနေသကဲ့သို့ အဟောအကျဉ်းကို မြန်မာလို ရေးပေးပါ။ အရေးကြီးဆုံး စည်းမျဉ်းမှာ: မေးမြန်းထားသော ကဏ္ဍ (${categoryNameMM}) နှင့် လုံးဝမဆိုင်သော အခြားကဏ္ဍများ (ဥပမာ ကျန်းမာရေး သို့မဟုတ် ပညာရေးမေးလျှင် အချစ်ရေးအကြောင်းများ လုံးဝ (လုံးဝ) မထည့်ရပါ)။ ကဒ်နာမည်များ မပါရပါ။ 'AI' သို့မဟုတ် 'စက်ပစ္စည်း' ဟူ၍လည်း လုံးဝမသုံးရပါ။`;
+            // 🌟 Strict Category Isolation in Prompt to prevent any cross-contamination (e.g. love leaking into health)
+            let promptText = `သင်သည် မြန်မာ့ရိုးရာနှင့် တာရော့တ်ဗေဒင်ပညာကို ကျွမ်းကျင်သော နားဝင်ချိုပြီး စိတ်ဓာတ်ခွန်အားပေးတတ်သည့် နာမည်ကြီး ဆရာမတစ်ဦး ဖြစ်ပါသည်။ အသုံးပြုသူက '${selectedCategoryType}' (${categoryNameMM}) ကဏ္ဍအတွက် တာရော့တ်ကဒ် ${totalNeeded} ချပ် ရွေးချယ်ထားပါသည်။ ထိုကဒ်များ၏ အနှစ်ချုပ်များမှာ: ${cardsDescString} ဖြစ်ပါသည်။ တကယ့် လူဗေဒင်ဆရာမတစ်ဦးက ရင်ဘတ်ချင်းနီးနီး ဖော်ရွေစွာဖြင့် ဟောပြောနေသကဲ့သို့ အဟောအကျဉ်းကို မြန်မာလို ရေးပေးပါ။ အရေးကြီးဆုံး စည်းမျဉ်းမှာ: မေးမြန်းထားသော ကဏ္ဍ '${categoryNameMM}' နှင့် လုံးဝ (လုံးဝ) သက်ဆိုင်ခြင်းမရှိသော အခြားကဏ္ဍများ (ဥပမာ ကျန်းမာရေး သို့မဟုတ် ပညာရေးမေးလျှင် အချစ်ရေး၊ ရည်းစား၊ ချစ်သူအကြောင်းများ လုံးဝမထည့်ရပါ)။ ကဒ်နာမည်များ မပါရပါ။ 'AI' သို့မဟုတ် 'စက်ပစ္စည်း' ဟူ၍လည်း လုံးဝမသုံးရပါ။`;
 
             try {
                 let response = await fetch('https://api.openai.com/v1/chat/completions', {
